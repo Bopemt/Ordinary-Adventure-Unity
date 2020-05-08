@@ -43,7 +43,7 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: 09ab93e6a5cad8946b12c97014e15645, type: 3}
-    totalSpriteSurfaceArea: 1406004
+    totalSpriteSurfaceArea: 1406260
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
@@ -130,6 +130,7 @@ SpriteAtlas:
   - {fileID: 6479310752233501953, guid: 39e040c1a1654c34a8a668b580545fa2, type: 3}
   - {fileID: 21300000, guid: d9f99f22a39d964428345cc2f045599d, type: 3}
   - {fileID: 21300000, guid: 68f4d2b234ab798498e431a31c5fdfbf, type: 3}
+  - {fileID: 21300000, guid: ffcffab32fc023146b8021cf1dfb1b10, type: 3}
   - {fileID: 21300000, guid: 425d78a4aa41a09418e18eb027b6749c, type: 3}
   - {fileID: 1336440320741484319, guid: a9677ed4b207471489d56bfe6d0cbd30, type: 3}
   - {fileID: -93750458980389090, guid: a9677ed4b207471489d56bfe6d0cbd30, type: 3}
@@ -1539,6 +1540,7 @@ SpriteAtlas:
   - Bow2_1
   - Energy Bar PSD
   - Energy Bar Border
+  - bow
   - HealthBar
   - objects_8
   - objects_9

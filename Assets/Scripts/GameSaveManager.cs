@@ -34,7 +34,7 @@ public class GameSaveManager : MonoBehaviour
 
     public void SaveSctiptables()
     {
-        for(int i = 0; i < objects.Count; i++)
+        for (int i = 0; i < objects.Count; i++)
         {
             FileStream file = File.Create(Application.persistentDataPath +
                 string.Format("/{0}.dat", i));
@@ -47,7 +47,7 @@ public class GameSaveManager : MonoBehaviour
 
     public void LoadScriptables()
     {
-        for(int i = 0; i<objects.Count; i++)
+        for (int i = 0; i < objects.Count; i++)
         {
             if (File.Exists(Application.persistentDataPath +
                 string.Format("/{0}.dat", i)))
@@ -61,4 +61,32 @@ public class GameSaveManager : MonoBehaviour
             }
         }
     }
+
+    //public void SaveSctiptables()
+    //{
+    //    for (int i = 0; i < objects.Count; i++)
+    //    {
+    //        FileStream file = File.Create(Application.persistentDataPath +
+    //            "game.dt");
+    //        BinaryFormatter binary = new BinaryFormatter();
+    //        binary.Serialize(file, objects[i]);
+    //        file.Close();
+    //    }
+    //}
+
+    //public void LoadScriptables()
+    //{
+    //    if (File.Exists(Application.persistentDataPath +
+    //        "/game.dt"))
+    //    {
+    //        FileStream file = File.Open(Application.persistentDataPath +
+    //            "/game.dt", FileMode.Open);
+    //        BinaryFormatter binary = new BinaryFormatter();
+    //        //JsonUtility.FromJsonOverwrite((string)binary.Deserialize(file),
+    //        //    objects[i]);
+    //        objects = (List<ScriptableObject>)binary.Deserialize(file);
+    //        file.Close();
+    //    }
+
+    //}
 }

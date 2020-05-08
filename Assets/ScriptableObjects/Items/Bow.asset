@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a8b00d6727b2fc43aab7c18d6737fca, type: 3}
   m_Name: Bow
   m_EditorClassIdentifier: 
-  itemSprite: {fileID: -265020262598616362, guid: 39e040c1a1654c34a8a668b580545fa2,
-    type: 3}
+  itemSprite: {fileID: 21300000, guid: ffcffab32fc023146b8021cf1dfb1b10, type: 3}
   itemDescription: It's a BOW. Now u can use range attack. To select range weapon
     press 2.
   isKey: 0
