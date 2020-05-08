@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tileset version="1.2" tiledversion="1.3.3" name="overworld" tilewidth="16" tileheight="16" tilecount="1440" columns="40">
+ <image source="../Art/Overworld.png" width="640" height="576"/>
+ <terraintypes>
+  <terrain name="path" tile="-1"/>
+  <terrain name="water" tile="-1"/>
+  <terrain name="Tree" tile="0"/>
+  <terrain name="water coupls" tile="0"/>
+ </terraintypes>
+ <tile id="40" terrain="3,3,3,3"/>
+ <tile id="41" terrain="3,3,3,3"/>
+ <tile id="43" terrain="3,3,3,3"/>
+ <tile id="80" terrain="3,3,3,3"/>
+ <tile id="81" terrain="3,3,3,3"/>
+ <tile id="82" terrain="3,3,3,3"/>
+ <tile id="83" terrain="3,3,3,3"/>
+ <tile id="242" terrain=",,,1"/>
+ <tile id="243" terrain=",,1,1"/>
+ <tile id="244" terrain=",,1,"/>
+ <tile id="282" terrain=",1,,1"/>
+ <tile id="283" terrain="1,1,1,1"/>
+ <tile id="284" terrain="1,,1,"/>
+ <tile id="322" terrain=",1,,"/>
+ <tile id="323" terrain="1,1,,"/>
+ <tile id="324" terrain="1,,,"/>
+ <tile id="362" terrain="1,1,1,"/>
+ <tile id="363" terrain="1,1,,1"/>
+ <tile id="402" terrain="1,,1,1"/>
+ <tile id="403" terrain=",1,1,1"/>
+ <tile id="1160" terrain=",,,0"/>
+ <tile id="1161" terrain=",,0,0"/>
+ <tile id="1162" terrain=",,0,"/>
+ <tile id="1200" terrain=",0,,0"/>
+ <tile id="1201" terrain="0,0,0,0"/>
+ <tile id="1202" terrain="0,,0,"/>
+ <tile id="1240" terrain=",0,,"/>
+ <tile id="1241" terrain="0,0,,"/>
+ <tile id="1242" terrain="0,,,"/>
+ <tile id="1280" terrain="0,0,0,"/>
+ <tile id="1281" terrain="0,0,,0"/>
+ <tile id="1320" terrain="0,,0,0"/>
+ <tile id="1321" terrain=",0,0,0"/>
+</tileset>
