@@ -251,6 +251,61 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2063358844}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &920410199
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 920410201}
+  - component: {fileID: 920410200}
+  m_Layer: 0
+  m_Name: Game Save Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &920410200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 920410199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b073722a75a1944fa7dcc81d93ff5e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objects:
+  - {fileID: 11400000, guid: 0d2a90529e54a454f9bee80d28ae4a0a, type: 2}
+  - {fileID: 11400000, guid: 994090fc01fdd0444bbd719d13deb838, type: 2}
+  - {fileID: 11400000, guid: dde2d83f49aa6724db9a266086182c88, type: 2}
+  - {fileID: 11400000, guid: d0d7f7351568a7d4ea8c4459a3bdb884, type: 2}
+  - {fileID: 11400000, guid: 9e137e7f235d6554daaad92e23ae97bf, type: 2}
+  - {fileID: 11400000, guid: eb7ad4fd70202fc4ca5fb7bf5585b3cc, type: 2}
+  - {fileID: 11400000, guid: f464a7f0373c7204b8c9f8eaa8290d5c, type: 2}
+  - {fileID: 11400000, guid: 88eb95d43c194154f9184efd16f0235a, type: 2}
+  - {fileID: 11400000, guid: 96cc8665dd630bb4b9dba529a352ef3a, type: 2}
+  - {fileID: 11400000, guid: c044850f3f932234dacd8c8cf216b001, type: 2}
+  - {fileID: 11400000, guid: 6d5eb448cf0562644a9fe1e391844f2f, type: 2}
+--- !u!4 &920410201
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 920410199}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9.473774, y: 2.8334377, z: -1.8085938}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1518111459
 GameObject:
   m_ObjectHideFlags: 0

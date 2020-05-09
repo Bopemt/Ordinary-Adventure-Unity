@@ -76,6 +76,7 @@ public class Enemy : MonoBehaviour
             if (roomSignal != null)
             {
                 roomSignal.Raise();
+                Debug.Log("Here");
             }
             this.gameObject.SetActive(false);
             Death();

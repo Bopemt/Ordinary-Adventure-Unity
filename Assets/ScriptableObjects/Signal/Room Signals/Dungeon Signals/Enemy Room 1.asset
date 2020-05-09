@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e6e620ae9b521e458d919fe04713dce, type: 3}
-  m_Name: CameraMin
+  m_Script: {fileID: 11500000, guid: 0f25b71579d4a0f45b38b9ffda8566db, type: 3}
+  m_Name: Enemy Room 1
   m_EditorClassIdentifier: 
-  initialValue: {x: 0, y: 0}
-  defaultValue: {x: 0, y: 0}
+  listeners: []

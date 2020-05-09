@@ -3,24 +3,18 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameSaveManager : MonoBehaviour
 {
-    //public static GameSaveManager gameSave;
     public List<ScriptableObject> objects = new List<ScriptableObject>();
 
-    //private void Awake()
-    //{
-    //    if(gameSave == null)
-    //    {
-    //        gameSave = this;
-    //    }
-    //    else
-    //    {
-    //        Destroy(this);
-    //    }
-    //    DontDestroyOnLoad(this.gameObject);
-    //}
+    void Update()
+    {
+        if (Input.GetKey(KeyCode.F4)) { SceneManager.LoadScene(SceneManager.GetActiveScene().name); }
+        if (Input.GetKey(KeyCode.F5)) { SaveScriptables(); }
+        if (Input.GetKey(KeyCode.F6)) { ResetScriptables(); }
+    }
 
     private void OnEnable()
     {
@@ -29,10 +23,43 @@ public class GameSaveManager : MonoBehaviour
 
     private void OnDisable()
     {
-        SaveSctiptables();
+        SaveScriptables();
     }
 
-    public void SaveSctiptables()
+    public void ResetScriptables()
+    {
+        for(int i = 0; i< objects.Count; i++)
+        {
+            foreach (ScriptableObject sObject in objects)
+            {
+                switch (sObject)
+                {
+                    case BoolValue btmp:
+                        btmp.RuntimeValue = btmp.initialValue;
+                        break;
+                    case FloatValue ftmp:
+                        ftmp.RuntimeValue = ftmp.initialValue;
+                        break;
+                    case Inventory itmp:
+                        itmp.coins = 0;
+                        itmp.items.Clear();
+                        itmp.numberOfKeys = 0;
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            if (File.Exists(Application.persistentDataPath +
+                string.Format("/{0}.dat", i)))
+            {
+                File.Delete(Application.persistentDataPath +
+                    string.Format("/{0}.dat", i));
+            }
+        }
+    }
+
+    public void SaveScriptables()
     {
         for (int i = 0; i < objects.Count; i++)
         {

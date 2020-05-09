@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 
 public enum PlayerState
@@ -120,7 +119,6 @@ public class PlayerMovement : MonoBehaviour
             UpdateAnimationAndMove();
         }
 
-        if (Input.GetKey(KeyCode.F5)) { SceneManager.LoadScene(SceneManager.GetActiveScene().name); }
         if (Input.GetKey(KeyCode.Alpha1)) { weaponSlot = 0; }
         if (Input.GetKey(KeyCode.Alpha2))
         {

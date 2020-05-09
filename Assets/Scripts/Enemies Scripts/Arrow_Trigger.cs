@@ -6,8 +6,7 @@ public class Arrow_Trigger : MonoBehaviour
 {
     //public BoxCollider2D myCollider;
     public GameObject myLog;
-
-    [HideInInspector]
+    
     private float knockTime;
     private float damage;
     private float thrust;

@@ -11,16 +11,25 @@ public class DungeonEnemyRoom : DungeonRoom
         OpenDoors();
     }
 
-    public void CheckEnemies()
+    public int EnemiesActive()
     {
+        int activeEnemies = 0;
         for (int i = 0; i < enemies.Length; i++)
         {
-            if (enemies[i].gameObject.activeInHierarchy && i < enemies.Length - 1)
+            if (enemies[i].gameObject.activeInHierarchy)
             {
-                return;
+                activeEnemies++;
             }
         }
-        OpenDoors();
+        return activeEnemies;
+    }
+
+    public void CheckEnemies()
+    {
+        if(EnemiesActive() == 1)
+        {
+            OpenDoors();
+        }
     }
 
     public override void OnTriggerEnter2D(Collider2D other)
