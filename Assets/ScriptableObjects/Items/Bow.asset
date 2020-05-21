@@ -9,10 +9,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a8b00d6727b2fc43aab7c18d6737fca, type: 3}
+  m_Script: {fileID: 11500000, guid: 63e784c562668d744897ec6c6e76bde4, type: 3}
   m_Name: Bow
   m_EditorClassIdentifier: 
-  itemSprite: {fileID: 21300000, guid: ffcffab32fc023146b8021cf1dfb1b10, type: 3}
-  itemDescription: It's a BOW. Now u can use range attack. To select range weapon
-    press 2.
-  isKey: 0
+  myName: Bow
+  myDescription: Sharpy bow
+  mySprite: {fileID: 21300000, guid: ffcffab32fc023146b8021cf1dfb1b10, type: 3}
+  numberHeld: 0
+  usable: 0
+  unique: 1
+  pocket: 1
+  weapon: 1
+  rangeWeapon: 1
+  attackDuration: 0.5
+  damage: 1
+  energyCost: 1
+  thisEvent:
+    m_PersistentCalls:
+      m_Calls: []

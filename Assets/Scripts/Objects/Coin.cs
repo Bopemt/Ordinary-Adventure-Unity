@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Coin : PowerUp
 {
-    public Inventory playerInventory;
+    public FloatValue coinCount;
 
     public void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player") && !other.isTrigger)
         {
-            playerInventory.coins += 1;
+            coinCount.value += 1;
             powerUpSignal.Raise();
             Destroy(this.gameObject);
         }

@@ -6,21 +6,21 @@ using TMPro;
 
 public class HealthBar : MonoBehaviour
 {
-    public Slider slider;
-    public TextMeshProUGUI text;
-    public FloatValue playerHealth;
+    [SerializeField] private Slider slider;
+    [SerializeField] private TextMeshProUGUI text;
+    [SerializeField] private FloatValue playerHealth;
 
     public void SetMaxHealth()
     {
-        slider.maxValue = playerHealth.initialValue;
-        slider.value = playerHealth.RuntimeValue;
-        text.text = playerHealth.RuntimeValue + "/" + playerHealth.initialValue;
+        slider.maxValue = playerHealth.defaultValue;
+        slider.value = playerHealth.value;
+        text.text = playerHealth.value + "/" + playerHealth.defaultValue;
     }
 
     public void SetHealth()
     {
-        slider.value = playerHealth.RuntimeValue;
-        text.text = playerHealth.RuntimeValue + "/" + playerHealth.initialValue;
+        slider.value = playerHealth.value;
+        text.text = playerHealth.value + "/" + playerHealth.defaultValue;
     }
 
     private void Start()
@@ -28,9 +28,4 @@ public class HealthBar : MonoBehaviour
         SetMaxHealth();
         SetHealth();
     }
-
-    //private void Update()
-    //{
-    //    SetHealth();
-    //}
 }

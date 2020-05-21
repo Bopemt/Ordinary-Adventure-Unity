@@ -17,12 +17,12 @@ TagManager:
   - 
   - 
   - Enemy
-  - Enemy Projectile
+  - 
   - Cinemachine
-  - Player Projectile
+  - Enemy Projectile
   - Player
-  - Enemy For Arrow
-  - Power Up
+  - Player Projectile
+  - Items&Chests
   - Damaged Player
   - 
   - 

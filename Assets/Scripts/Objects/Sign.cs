@@ -6,44 +6,49 @@ using TMPro;
 
 public class Sign : Interactable
 {
-    public GameObject dialogBox;
-    [HideInInspector]
-    public TextMeshProUGUI dialogText;
-    [HideInInspector]
-    public TextMeshProUGUI dialogName;
-    public string text;
-    public string speakerName;
+    [Header("Sign")]
+    [SerializeField] protected string text;
+    [SerializeField] protected string speakerName;
+    [SerializeField] protected StringValue stringText;
+    [SerializeField] protected StringValue stringName;
+    [SerializeField] protected GenericStateMachine myState;
+    [SerializeField] protected bool check = false;
 
-    private void Start()
-    {
-        dialogText = dialogBox.transform.Find("Dialog Text Box").GetComponent<TextMeshProUGUI>();
-        dialogName = dialogBox.transform.Find("Name Box").GetComponent<TextMeshProUGUI>();
-    }
+    [Header("Dialog Stuff")]
+    [SerializeField] protected SignalCore dialogSignal;
 
-    void Update()
+    protected virtual void Update()
     {
-        if (Input.GetButtonDown("Interact") && playerInRange)
+        if (Input.GetButtonDown("Interact") && playerInRange && myState.myState != GenericState.inventory)
         {
-            if (dialogBox.activeInHierarchy)
+            if (!check)
             {
-                dialogBox.SetActive(false);
+                check = !check;
+                DisplayContents();
+                Time.timeScale = 0.000001f;
             }
             else
             {
-                dialogBox.SetActive(true);
-                dialogText.text = text;
-                dialogName.text = speakerName;
+                DisableContents();
+                check = !check;
+                Time.timeScale = 1;
             }
         }
     }
 
-    public override void OnTriggerExit2D(Collider2D other)
+    protected void DisplayContents()
     {
-        if (other.CompareTag("Player") && !other.isTrigger)
-        {
-            context.Raise();
-            playerInRange = false;
-            dialogBox.SetActive(false);
-        }
+        stringName.value = speakerName;
+        stringText.value = text;
+        dialogSignal.Raise();
+        myState.ChangeState(GenericState.interact);
+        context.Raise();
+    }
+
+    protected void DisableContents()
+    {
+        myState.ChangeState(GenericState.idle);
+        dialogSignal.Raise();
+        context.Raise();
     }
 }

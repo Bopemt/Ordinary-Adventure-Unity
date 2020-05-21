@@ -2,23 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DungeonEnemyRoom : DungeonRoom
+public class DungeonEnemyRoom : Room
 {
-    public Door[] doors;
+    [SerializeField] private Door[] doors;
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         OpenDoors();
     }
 
     public int EnemiesActive()
     {
         int activeEnemies = 0;
-        for (int i = 0; i < enemies.Length; i++)
+
+        foreach(GameObject _object in respawnObjects)
         {
-            if (enemies[i].gameObject.activeInHierarchy)
+            if (_object.GetComponent<Rigidbody2D>())
             {
-                activeEnemies++;
+                if (_object.GetComponent<Rigidbody2D>().gameObject.activeInHierarchy)
+                {
+                    activeEnemies++;
+                }
             }
         }
         return activeEnemies;
@@ -26,45 +31,24 @@ public class DungeonEnemyRoom : DungeonRoom
 
     public void CheckEnemies()
     {
-        if(EnemiesActive() == 1)
+        if (EnemiesActive() == 1)
         {
             OpenDoors();
         }
     }
 
-    public override void OnTriggerEnter2D(Collider2D other)
+    protected override void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player") && !other.isTrigger)
         {
-            for (int i = 0; i < enemies.Length; i++)
-            {
-                ChangeActivation(enemies[i], true);
-            }
-
-            for (int i = 0; i < breakables.Length; i++)
-            {
-                ChangeActivation(breakables[i], true);
-            }
-            Invoke("CloseDoors", 0.5f);
+            RespawnObjects();
             virtualCamera.SetActive(true);
-            StartCoroutine(placeNameCo());
-        }
-    }
-
-    public override void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.CompareTag("Player") && !other.isTrigger)
-        {
-            for (int i = 0; i < enemies.Length; i++)
+            if (haveName)
             {
-                ChangeActivation(enemies[i], false);
+                StartCoroutine(placeNameCo());
             }
-
-            for (int i = 0; i < breakables.Length; i++)
-            {
-                ChangeActivation(breakables[i], false);
-            }
-            virtualCamera.SetActive(false);
+            if(EnemiesActive() == 0) { return; }
+            Invoke("CloseDoors", 0.8f);
         }
     }
 

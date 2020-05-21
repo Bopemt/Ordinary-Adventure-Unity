@@ -4,21 +4,22 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
-    public bool playerInRange;
-    public SignalCore context;
+    [SerializeField] protected bool playerInRange;
+    [SerializeField] public SignalCore context;
+    [SerializeField] protected string otherTag;
 
-    public virtual void OnTriggerEnter2D(Collider2D other)
+    protected virtual void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && !other.isTrigger)
+        if (other.gameObject.CompareTag(otherTag) && !other.isTrigger)
         {
             context.Raise();
             playerInRange = true;
         }
     }
 
-    public virtual void OnTriggerExit2D(Collider2D other)
+    protected virtual void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && !other.isTrigger)
+        if (other.gameObject.CompareTag(otherTag) && !other.isTrigger)
         {
             context.Raise();
             playerInRange = false;

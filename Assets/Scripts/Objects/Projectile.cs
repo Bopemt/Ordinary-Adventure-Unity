@@ -4,27 +4,13 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public float moveSpeed;
-    public Vector2 direction;
-    public float lifetime;
-    private float lifetimeSeconds;
-    public Rigidbody2D myRigidbody;
-
-    // Start is called before the first frame update
+    [SerializeField] private float moveSpeed;
+    //[SerializeField] private Vector2 direction;
+    [SerializeField] private Rigidbody2D myRigidbody;
+    
     void Start()
     {
         myRigidbody = GetComponent<Rigidbody2D>();
-        lifetimeSeconds = lifetime;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        lifetimeSeconds -= Time.deltaTime;
-        if(lifetimeSeconds <= 0)
-        {
-            Destroy(this.gameObject);
-        }
     }
 
     public void Launch(Vector2 initialVelocity)

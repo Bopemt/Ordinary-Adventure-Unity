@@ -8,7 +8,7 @@ public class SignalListener : MonoBehaviour
     public SignalCore signal;
     public UnityEvent signalEvent;
 
-    public void OnSignalRaised()
+    public void Raise()
     {
         signalEvent.Invoke();
     }
@@ -20,6 +20,6 @@ public class SignalListener : MonoBehaviour
 
     private void OnDisable()
     {
-        signal.DeRegisterListener(this);
+        signal.DeregisterListener(this);
     }
 }

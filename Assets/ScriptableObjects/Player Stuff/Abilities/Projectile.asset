@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 512dfb98fd6149b40937cbb01b9538a4, type: 3}
+  m_Name: Projectile
+  m_EditorClassIdentifier: 
+  energyCost: {fileID: 11400000, guid: 60da87f1ae6ab2848b34f3f8123f5223, type: 2}
+  duration: 0.1
+  playerEnergy: {fileID: 11400000, guid: 96cc8665dd630bb4b9dba529a352ef3a, type: 2}
+  energySignal: {fileID: 11400000, guid: 4646cb278988c874f96c44cbcb2089e2, type: 2}
+  projectile: {fileID: 8165786444482579917, guid: cdc2da271d192144eb255ade690f31e3,
+    type: 3}
+  bowObject: {fileID: 8372755614638127994, guid: a0e1157d3d103ed4fadc5fd59471dc10,
+    type: 3}

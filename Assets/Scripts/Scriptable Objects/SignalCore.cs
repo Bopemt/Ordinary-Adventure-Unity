@@ -11,17 +11,23 @@ public class SignalCore : ScriptableObject
     {
         for (int i = listeners.Count - 1; i >= 0; i--)
         {
-            listeners[i].OnSignalRaised();
+            listeners[i].Raise();
         }
     }
 
     public void RegisterListener(SignalListener listener)
     {
-        listeners.Add(listener);
+        if (!listeners.Contains(listener))
+        {
+            listeners.Add(listener);
+        }
     }
 
-    public void DeRegisterListener(SignalListener listener)
+    public void DeregisterListener(SignalListener listener)
     {
-        listeners.Remove(listener);
+        if (listeners.Contains(listener))
+        {
+            listeners.Remove(listener);
+        }
     }
 }

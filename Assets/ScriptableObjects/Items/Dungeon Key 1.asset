@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63e784c562668d744897ec6c6e76bde4, type: 3}
+  m_Name: Dungeon Key 1
+  m_EditorClassIdentifier: 
+  myName: Dungeon Start Room Key
+  myDescription: This key is required to open the dungeon.
+  mySprite: {fileID: 21300000, guid: caa51e3d210f0c94ebe0f18b971c086f, type: 3}
+  numberHeld: 0
+  usable: 0
+  unique: 1
+  pocket: 0
+  weapon: 0
+  rangeWeapon: 0
+  attackDuration: 0
+  damage: 0
+  energyCost: 0
+  thisEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6626883612656141044, guid: f8fb95d049a6aec45a5cdda1fc224fff,
+          type: 3}
+        m_MethodName: Use
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

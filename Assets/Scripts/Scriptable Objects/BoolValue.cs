@@ -2,11 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "Values/Bool Value", fileName = "New String Value")]
 [System.Serializable]
 public class BoolValue : ScriptableObject
 {
-    public bool initialValue;
+    public bool defaultValue;
     
-    public bool RuntimeValue;
+    public bool value;
+
+    private void OnEnable()
+    {
+        value = defaultValue;
+    }
 }

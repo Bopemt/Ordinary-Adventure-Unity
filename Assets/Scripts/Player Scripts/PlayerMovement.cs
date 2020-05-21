@@ -2,272 +2,170 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-public enum PlayerState
+public class PlayerMovement : Movement
 {
-    walk,
-    attack,
-    interact,
-    stagger,
-    idle
-}
+    [Header("New")]
+    [SerializeField] private AnimatorController anim;
+    [SerializeField] private VectorValue startingPosition;
+    [SerializeField] private GenericStateMachine myState;
+    [SerializeField] private RecieveItem myItem;
 
-public class PlayerMovement : MonoBehaviour
-{
-    public PlayerState currentState;
-    public float speed;
-    
-    private Rigidbody2D myRigidbody;
-    private Vector3 change;
-    private Animator animator;
+    [Header("Attack Stuff")]
+    [SerializeField] private GenericAbility currentAbility;
+    [SerializeField] private GenericAbility rangeAttack;
+    [SerializeField] private WeaponValue currentWeapon;
+    [SerializeField] private GenericEnergy playerEnergy;
 
-    [Header("Connections")]
-    public VectorValue startingPosition;
-    public Inventory playerInventory;
-    public SpriteRenderer recievedItemSprite;
+    private Vector2 tempMovement = Vector2.down;
+    private Vector2 faceDirection = Vector2.down;
 
-    [Header("Health")]
-    public FloatValue currentHealth;
-    public SignalCore playerHealthSignal;
+    //[Header("Inventory Panel")]
+    //[SerializeField] private InventoryManager myInventoryPanel;
 
-    [Header("Energy")]
-    public FloatValue currentEnergy;
-    public SignalCore playerEnergySignal;
-    public float energyRecoveryAmount;
-
-    [Header("Range Attack")]
-    public GameObject projectile;
-    public GameObject bowObject;
-    public Item bow;
-    public float fireDelay;
-    private float fireDelaySeconds;
-    public bool canFire;
-
-    [Header("Weapon")]
-    public int weaponSlot;
-
-    [Header("IFrame Stuff")]
-    public Color flashColor;
-    public Color regularColor;
-    public float flashDuration;
-    public int numberOfFlashes;
-    private SpriteRenderer mySprite;
-    private GameObject kinematicBody;
-    
     void Start()
     {
-        canFire = false;
-        currentState = PlayerState.walk;
-        animator = GetComponent<Animator>();
-        myRigidbody = GetComponent<Rigidbody2D>();
-        animator.SetFloat("moveX", 0);
-        animator.SetFloat("moveY", -1);
-        playerHealthSignal.Raise();
-        playerEnergySignal.Raise();
-        transform.position = startingPosition.initialValue;
-        mySprite = GetComponent<SpriteRenderer>();
-        kinematicBody = transform.Find("player_Kinematic").gameObject;
+        myState.ChangeState(GenericState.idle);
+        transform.parent.position = startingPosition.value;
     }
-    
+
     void Update()
     {
-        if (currentEnergy.RuntimeValue < currentEnergy.initialValue)
+        if (myState.myState == GenericState.recieveItem)
         {
-            currentEnergy.RuntimeValue += energyRecoveryAmount;
-            playerEnergySignal.Raise();
-            if (currentEnergy.RuntimeValue > currentEnergy.initialValue)
+            tempMovement = Vector2.zero;
+            Motion(tempMovement);
+            if (Input.GetButtonDown("Interact"))
             {
-                currentEnergy.RuntimeValue = currentEnergy.initialValue;
-                playerEnergySignal.Raise();
+                myState.ChangeState(GenericState.idle);
+                anim.SetAnimParameter("recieveItem", false);
+                myItem.ChangeSpriteState();
             }
-        }
-
-        if (!canFire)
-        {
-            fireDelaySeconds -= Time.deltaTime;
-            if (fireDelaySeconds <= 0)
-            {
-                canFire = true;
-                fireDelaySeconds = fireDelay;
-            }
-        }
-
-        if (currentState == PlayerState.interact)
-        {
             return;
         }
-        change = Vector3.zero;
-        change.x = Input.GetAxisRaw("Horizontal");
-        change.y = Input.GetAxisRaw("Vertical");
-        if(Input.GetButtonDown("Attack") && currentState != PlayerState.attack && currentState != PlayerState.stagger)
+
+        if (!IsRestrictedState(myState.myState))
         {
-            if (weaponSlot == 0)
+            GetInput();
+            SetAnimation();
+        }
+    }
+
+    public void SetState(GenericState newState)
+    {
+        myState.ChangeState(newState);
+    }
+
+    public bool IsRestrictedState(GenericState currentState)
+    {
+        if (currentState == GenericState.attack || currentState == GenericState.ability || currentState == GenericState.pause 
+            || myState.myState == GenericState.interact || myState.myState == GenericState.inventory)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    void GetInput()
+    {
+        if (Input.GetButtonDown("Attack") /*&& myState.myState != GenericState.interact && myState.myState != GenericState.inventory*/)
+        {
+            if (currentWeapon.value)
             {
-                StartCoroutine(AttackCo());
-            }
-            else if(weaponSlot == 1)
-            {
-                if (canFire)
+                if (!currentWeapon.value.rangeWeapon)
                 {
-                    canFire = false;
-                    StartCoroutine(RangeAttackCo());
+                    StartCoroutine(AttackCo(currentWeapon.value.attackDuration));
+                    tempMovement = Vector2.zero;
+                    Motion(tempMovement);
+                }
+                else
+                {
+                    StartCoroutine(RangeAttackCo(currentWeapon.value.attackDuration));
+                    tempMovement = Vector2.zero;
+                    Motion(tempMovement);
                 }
             }
         }
-        else if (currentState == PlayerState.walk || currentState == PlayerState.idle)
+        else if (Input.GetButtonDown("Ability") /*&& myState.myState != GenericState.interact && myState.myState != GenericState.inventory*/)
         {
-            UpdateAnimationAndMove();
-        }
-
-        if (Input.GetKey(KeyCode.Alpha1)) { weaponSlot = 0; }
-        if (Input.GetKey(KeyCode.Alpha2))
-        {
-            if(playerInventory.CheckForItem(bow))
-            weaponSlot = 1;
-        }
-    }
-
-    private IEnumerator AttackCo()
-    {
-        animator.SetBool("attacking", true);
-        currentState = PlayerState.attack;
-        yield return null;
-        animator.SetBool("attacking", false);
-        yield return new WaitForSeconds(.3f);
-        if (currentState != PlayerState.interact)
-        {
-            currentState = PlayerState.walk;
-        }
-    }
-
-    private IEnumerator RangeAttackCo()
-    {
-        MakeBow();
-        if (currentEnergy.RuntimeValue >= projectile.GetComponent<Arrow>().energyCost)
-        {
-            currentState = PlayerState.attack;
-            MakeArrow();
-            yield return new WaitForSeconds(0.1f);
-            currentState = PlayerState.idle;
-        }
-        if (currentState != PlayerState.attack)
-        {
-            currentState = PlayerState.walk;
-        }
-    }
-
-    private void MakeArrow()
-    {
-        Vector2 tempArrow = new Vector2(animator.GetFloat("moveX"), animator.GetFloat("moveY"));
-
-        Arrow arrow = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Arrow>();
-        currentEnergy.RuntimeValue -= arrow.energyCost;
-        playerEnergySignal.Raise();
-        arrow.Setup(tempArrow, ChooseBowArrowDirection());
-
-        //Vector2 tempArrow = myRigidbody.transform.position - transform.position;
-        tempArrow = tempArrow.normalized * 2;
-        myRigidbody.AddForce(-tempArrow, ForceMode2D.Impulse);
-        StartCoroutine(KnockCo(0.1f));
-    }
-
-    private void MakeBow()
-    {
-        Vector3 tempBow = new Vector3(animator.GetFloat("moveX") / 2, animator.GetFloat("moveY") / 2, 0);
-        Bow bow = Instantiate(bowObject, transform.position, Quaternion.identity).GetComponent<Bow>();
-        bow.Setup(ChooseBowArrowDirection(), tempBow + transform.position);
-    }
-
-    Vector3 ChooseBowArrowDirection()
-    {
-        float temp = Mathf.Atan2(animator.GetFloat("moveY"), animator.GetFloat("moveX")) * Mathf.Rad2Deg - 45;
-        return new Vector3(0, 0, temp);
-    }
-
-    public void RaiseItem()
-    {
-        if (playerInventory.currentItem != null)
-        {
-            if (currentState != PlayerState.interact)
+            if (currentAbility)
             {
-                animator.SetBool("recieve", true);
-                currentState = PlayerState.interact;
-                recievedItemSprite.sprite = playerInventory.currentItem.itemSprite;
+                StartCoroutine(AbilityCo(currentAbility.duration));
+                tempMovement = Vector2.zero;
+                Motion(tempMovement);
             }
-            else
+        }
+        //else if (Input.GetButtonDown("Inventory") && myState.myState != GenericState.interact)
+        //{
+        //    if (myInventoryPanel.gameObject.activeInHierarchy)
+        //    {
+        //        myInventoryPanel.gameObject.SetActive(false);
+        //        SetState(GenericState.idle);
+        //    }
+        //    else
+        //    {
+        //        myInventoryPanel.gameObject.SetActive(true);
+        //        SetState(GenericState.inventory);
+        //    }
+        //}
+        else if (tempMovement.magnitude >= 0/*myState.myState != GenericState.interact && myState.myState != GenericState.inventory*/)
+        {
+            tempMovement.x = Input.GetAxisRaw("Horizontal");
+            tempMovement.y = Input.GetAxisRaw("Vertical");
+            Motion(tempMovement);
+        }
+        else
+        {
+            tempMovement = Vector2.zero;
+            Motion(tempMovement);
+        }
+    }
+
+    void SetAnimation()
+    {
+        if (tempMovement.magnitude > 0)
+        {
+            anim.SetAnimParameter("moveX", Mathf.Round(tempMovement.x));
+            anim.SetAnimParameter("moveY", Mathf.Round(tempMovement.y));
+            anim.SetAnimParameter("moving", true);
+            SetState(GenericState.walk);
+            faceDirection = tempMovement;
+        }
+        else
+        {
+            anim.SetAnimParameter("moving", false);
+            if (myState.myState != GenericState.attack && myState.myState != GenericState.interact && myState.myState != GenericState.inventory && myState.myState != GenericState.ability)
             {
-                animator.SetBool("recieve", false);
-                currentState = PlayerState.idle;
-                recievedItemSprite.sprite = null;
-                playerInventory.currentItem = null;
+                SetState(GenericState.idle);
             }
         }
     }
 
-    void UpdateAnimationAndMove()
+    public IEnumerator AttackCo(float weaponAttackDuration)
     {
-        if (change != Vector3.zero)
-        {
-            MoveCharacter();
-            change.x = Mathf.Round(change.x);
-            change.y = Mathf.Round(change.y);
-            animator.SetFloat("moveX", change.x);
-            animator.SetFloat("moveY", change.y);
-            animator.SetBool("moving", true);
-        }
-        else
-        {
-            animator.SetBool("moving", false);
-        }
+        anim.anim.speed = 0.3f / weaponAttackDuration;
+        myState.ChangeState(GenericState.attack);
+        anim.SetAnimParameter("attacking", true);
+        yield return new WaitForSeconds(weaponAttackDuration);
+        anim.SetAnimParameter("attacking", false);
+        myState.ChangeState(GenericState.idle);
+        anim.anim.speed = 1;
     }
 
-    void MoveCharacter()
+    public IEnumerator RangeAttackCo(float abilityDuration)
     {
-        change.Normalize();
-        myRigidbody.MovePosition(transform.position + change.normalized * speed * Time.deltaTime);
+        SetState(GenericState.ability);
+        rangeAttack.Ability(transform.position, faceDirection, playerEnergy, anim.anim, myRigidbody);
+        yield return new WaitForSeconds(abilityDuration);
+        SetState(GenericState.idle);
     }
 
-    public void Knock(float knockTime, float damage)
+    public IEnumerator AbilityCo(float abilityDuration)
     {
-        currentHealth.RuntimeValue -= damage;
-        playerHealthSignal.Raise();
-        if (currentHealth.RuntimeValue > 0)
-        {
-            StartCoroutine(KnockCo(knockTime));
-            StartCoroutine(FlashCo());
-        }
-        else
-        {
-            currentHealth.RuntimeValue = 0;
-            this.gameObject.SetActive(false);
-        }
-    }
-
-    private IEnumerator KnockCo(float knockTime)
-    {
-        if (myRigidbody != null)
-        {
-            yield return new WaitForSeconds(knockTime);
-            myRigidbody.velocity = Vector2.zero;
-            currentState = PlayerState.idle;
-            myRigidbody.velocity = Vector2.zero;
-        }
-    }
-
-    private IEnumerator FlashCo()
-    {
-        int temp = 0;
-        gameObject.layer = 15;
-        kinematicBody.layer = 15;
-        while (temp < numberOfFlashes)
-        {
-            mySprite.color = flashColor;
-            yield return new WaitForSeconds(flashDuration);
-            mySprite.color = regularColor;
-            yield return new WaitForSeconds(flashDuration);
-            temp++;
-        }
-        gameObject.layer = 12;
-        kinematicBody.layer = 12;
+        //ghost.makeGhost = true;
+        SetState(GenericState.ability);
+        currentAbility.Ability(transform.position, faceDirection, playerEnergy, anim.anim, myRigidbody);
+        yield return new WaitForSeconds(abilityDuration);
+        SetState(GenericState.idle);
+        //ghost.makeGhost = false;
     }
 }

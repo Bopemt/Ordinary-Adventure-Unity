@@ -13,8 +13,10 @@ GameObject:
   - component: {fileID: 447037088910088763}
   - component: {fileID: 6426856039270984723}
   - component: {fileID: 7804534184107221261}
-  - component: {fileID: 6830089598859859763}
-  m_Layer: 9
+  - component: {fileID: 6850991154334953821}
+  - component: {fileID: -5775913415269520826}
+  - component: {fileID: -7600510229266721404}
+  m_Layer: 11
   m_Name: Rock Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -135,10 +137,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3b5de2c456831042a5b2537c394f7e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrust: 5
+  thrust: 0.8
   knockTime: 0.1
-  damage: 2
---- !u!114 &6830089598859859763
+  otherTag: Player
+--- !u!114 &6850991154334953821
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -147,10 +149,35 @@ MonoBehaviour:
   m_GameObject: {fileID: 589130815188133115}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ebaaebcd1d93e840a072a1255bfa083, type: 3}
+  m_Script: {fileID: 11500000, guid: acfa60d83a99ddc4abaf17743d1a31fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyDelay: 0.8
+--- !u!114 &-5775913415269520826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 589130815188133115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cef5de4fc1825047a872f0fa044ba19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  direction: {x: 0, y: 0}
-  lifetime: 0.8
   myRigidbody: {fileID: 6426856039270984723}
+--- !u!114 &-7600510229266721404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 589130815188133115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b284ca656e8abd9478bbcb01ec663158, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  otherTag: Player
+  damageAmount: 1

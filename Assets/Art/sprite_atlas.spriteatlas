@@ -43,7 +43,7 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: 09ab93e6a5cad8946b12c97014e15645, type: 3}
-    totalSpriteSurfaceArea: 1406260
+    totalSpriteSurfaceArea: 1410468
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
@@ -71,6 +71,7 @@ SpriteAtlas:
   - {fileID: 5566842953363755866, guid: 9a779c30b9ceedf4fb5551e42df38ec9, type: 3}
   - {fileID: -7445369939883215787, guid: 9a779c30b9ceedf4fb5551e42df38ec9, type: 3}
   - {fileID: 21300000, guid: d76826700b56f2544932b541a0ebade7, type: 3}
+  - {fileID: 21300000, guid: d293ad70cc4b8584fb8260d1304d5c56, type: 3}
   - {fileID: 21300000, guid: 00ec7fc0f050eba409cc490f46932adb, type: 3}
   - {fileID: -508318423956281493, guid: f7ca8661229cb1c4aa4bd8351d5bbca0, type: 3}
   - {fileID: 1833173614754274938, guid: f7ca8661229cb1c4aa4bd8351d5bbca0, type: 3}
@@ -128,8 +129,14 @@ SpriteAtlas:
   - {fileID: 1517548230796225090, guid: f7ca8661229cb1c4aa4bd8351d5bbca0, type: 3}
   - {fileID: -265020262598616362, guid: 39e040c1a1654c34a8a668b580545fa2, type: 3}
   - {fileID: 6479310752233501953, guid: 39e040c1a1654c34a8a668b580545fa2, type: 3}
+  - {fileID: 5868065780882382813, guid: 7fe996d1040ea4845a2bed211fd5d72f, type: 3}
+  - {fileID: -8485995304713028149, guid: 7fe996d1040ea4845a2bed211fd5d72f, type: 3}
+  - {fileID: -7118549172432436139, guid: 7fe996d1040ea4845a2bed211fd5d72f, type: 3}
+  - {fileID: 6285645462315052536, guid: 7fe996d1040ea4845a2bed211fd5d72f, type: 3}
+  - {fileID: -8419157238138717284, guid: 7fe996d1040ea4845a2bed211fd5d72f, type: 3}
   - {fileID: 21300000, guid: d9f99f22a39d964428345cc2f045599d, type: 3}
   - {fileID: 21300000, guid: 68f4d2b234ab798498e431a31c5fdfbf, type: 3}
+  - {fileID: 21300000, guid: a86ac2f234a459d41adc9eb534f54b58, type: 3}
   - {fileID: 21300000, guid: ffcffab32fc023146b8021cf1dfb1b10, type: 3}
   - {fileID: 21300000, guid: 425d78a4aa41a09418e18eb027b6749c, type: 3}
   - {fileID: 1336440320741484319, guid: a9677ed4b207471489d56bfe6d0cbd30, type: 3}
@@ -152,6 +159,8 @@ SpriteAtlas:
   - {fileID: 2269949439249822484, guid: a9677ed4b207471489d56bfe6d0cbd30, type: 3}
   - {fileID: 5197925540072060383, guid: a9677ed4b207471489d56bfe6d0cbd30, type: 3}
   - {fileID: 4455232240493665095, guid: a9677ed4b207471489d56bfe6d0cbd30, type: 3}
+  - {fileID: -7302307326716131399, guid: a9677ed4b207471489d56bfe6d0cbd30, type: 3}
+  - {fileID: 7564501798177618812, guid: a9677ed4b207471489d56bfe6d0cbd30, type: 3}
   - {fileID: 7206194005228167239, guid: a9677ed4b207471489d56bfe6d0cbd30, type: 3}
   - {fileID: 2727136117312835427, guid: a9677ed4b207471489d56bfe6d0cbd30, type: 3}
   - {fileID: -4922617476772045510, guid: a9677ed4b207471489d56bfe6d0cbd30, type: 3}
@@ -1366,9 +1375,11 @@ SpriteAtlas:
   - {fileID: 5213229242370633579, guid: e01702b6e0462ad41aad4448aad34627, type: 3}
   - {fileID: 436563815456543028, guid: e01702b6e0462ad41aad4448aad34627, type: 3}
   - {fileID: 21300000, guid: 0d8f77b6398042b4a935c60018bc972b, type: 3}
+  - {fileID: 21300000, guid: f6300ce6153d31340884fc6d1dbdf97f, type: 3}
   - {fileID: 21300000, guid: c63c0d17cb3209146852fb575a45e6cb, type: 3}
   - {fileID: 21300000, guid: dc80e6f7c98ec41459f64a0069b4baf9, type: 3}
   - {fileID: 21300000, guid: ef3a74287ffd96743b1a25c68fb768f1, type: 3}
+  - {fileID: 21300000, guid: 2ae90d28cd529284090039fe4a4f4ba4, type: 3}
   - {fileID: 21300000, guid: 470c31885148bef4eabba6fce29e0113, type: 3}
   - {fileID: -872947984015748712, guid: a8d0f0f9603d4fb45bce9773363352a2, type: 3}
   - {fileID: 4004008643541842471, guid: a8d0f0f9603d4fb45bce9773363352a2, type: 3}
@@ -1481,6 +1492,7 @@ SpriteAtlas:
   - log_21
   - log_22
   - NPC_test
+  - Soldier Sword
   - Heart White
   - Untitled (1)_30
   - Untitled (1)_31
@@ -1538,8 +1550,14 @@ SpriteAtlas:
   - Untitled (1)_19
   - Bow2_0
   - Bow2_1
+  - potions_4
+  - potions_0
+  - potions_1
+  - potions_2
+  - potions_3
   - Energy Bar PSD
   - Energy Bar Border
+  - bow 1
   - bow
   - HealthBar
   - objects_8
@@ -1562,6 +1580,8 @@ SpriteAtlas:
   - objects_11
   - objects_29
   - objects_10
+  - objects_40
+  - objects_39
   - objects_22
   - objects_38
   - objects_23
@@ -2776,9 +2796,11 @@ SpriteAtlas:
   - Door_0
   - Door_1
   - HeartBar - Border 1
+  - Super Bow
   - HeartBar - WBorder
   - Heart
   - Inner
+  - Lightning Sword
   - Energy Bar Charge
   - modified gfx melee sprites_15
   - modified gfx melee sprites_14

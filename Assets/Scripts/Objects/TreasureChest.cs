@@ -6,86 +6,71 @@ using TMPro;
 
 public class TreasureChest : Interactable
 {
-    public Item contents;
-    public Inventory playerInventory;
-    public bool isOpen;
-    public BoolValue storedOpen;
-    public SignalCore raiseItem;
-    public GameObject dialogBox;
-    [HideInInspector]
-    public TextMeshProUGUI dialogText;
-    [HideInInspector]
-    public TextMeshProUGUI dialogName;
-    public string speakerName;
-    private Animator anim;
-
-    // Start is called before the first frame update
+    [SerializeField] private AnimatorController anim;
+    [SerializeField] private BoolValue storedOpen;
+    [SerializeField] private bool isOpen;
+    [SerializeField] private SignalCore chestSignal;
+    [SerializeField] private SpriteValue spriteValue;
+    [SerializeField] private StringValue stringText;
+    [SerializeField] private StringValue stringName;
+    [SerializeField] private InventoryItem myItem;
+    [SerializeField] private PlayerInventory playerInventory;
+    
     void Start()
     {
-        anim = GetComponent<Animator>();
-        isOpen = storedOpen.RuntimeValue;
+        isOpen = storedOpen.value;
         if (isOpen)
         {
-            //anim.SetBool("opened", true);
-            anim.Play("chest_Open_Idle", 0, 1.0f);
-            //anim.StopRecording();
+            anim.anim.Play("chest_Open_Idle", 0, 1.0f);
         }
-        dialogText = dialogBox.transform.Find("Dialog Text Box").GetComponent<TextMeshProUGUI>();
-        dialogName = dialogBox.transform.Find("Name Box").GetComponent<TextMeshProUGUI>();
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
-        if (Input.GetButtonDown("Interact") && playerInRange)
+        if (playerInRange && Input.GetButtonUp("Interact"))
         {
-            if (!isOpen)
+            if (isOpen)
             {
-                OpenChest();
+                return;
             }
-            else
-            {
-                ChestAlreadyOpen();
-            }
+            OpenChest();
         }
     }
 
     public void OpenChest()
     {
-        dialogBox.SetActive(true);
-        dialogText.text = contents.itemDescription;
-        dialogName.text = speakerName;
-        playerInventory.AddItem(contents);
-        playerInventory.currentItem = contents;
-        raiseItem.Raise();
+        isOpen = !isOpen;
+        anim.SetAnimParameter("opened", true);
+        storedOpen.value = isOpen;
+        spriteValue.value = myItem.mySprite;
+        stringText.value = myItem.myDescription;
+        stringName.value = "";
+        chestSignal.Raise();
+        playerInventory.AddItem(myItem);
         context.Raise();
-        isOpen = true;
-        anim.SetBool("opened", true);
-        storedOpen.RuntimeValue = isOpen;
     }
 
-    public void ChestAlreadyOpen()
+    protected override void OnTriggerEnter2D(Collider2D other)
     {
-        dialogBox.SetActive(false);
-        raiseItem.Raise();
-        playerInRange = false;
-    }
-
-    public override void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Player") && !other.isTrigger && !isOpen)
+        if (other.gameObject.CompareTag(otherTag) && !other.isTrigger)
         {
-            context.Raise();
             playerInRange = true;
+            if (!isOpen)
+            {
+                context.Raise();
+            }
         }
     }
 
-    public override void OnTriggerExit2D(Collider2D other)
+    protected override void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && !other.isTrigger && !isOpen)
+        if (other.gameObject.CompareTag(otherTag) && !other.isTrigger)
         {
-            context.Raise();
             playerInRange = false;
+            if (!isOpen)
+            {
+                context.Raise();
+            }
         }
     }
 }

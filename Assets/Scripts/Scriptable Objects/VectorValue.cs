@@ -2,17 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
-public class VectorValue : ScriptableObject, ISerializationCallbackReceiver
+[CreateAssetMenu(menuName = "Values/Vector Value", fileName = "New String Value")]
+[System.Serializable]
+public class VectorValue : ScriptableObject
 {
-    public Vector2 initialValue;
+    [SerializeField] private Vector2 defaultValue;
 
-    public Vector2 defaultValue;
+    public Vector2 value;
 
-    public void OnBeforeSerialize() { }
-
-    public void OnAfterDeserialize()
+    private void OnEnable()
     {
-        initialValue = defaultValue;
+        value = defaultValue;
     }
 }

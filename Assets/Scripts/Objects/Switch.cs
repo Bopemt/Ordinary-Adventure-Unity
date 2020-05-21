@@ -13,7 +13,7 @@ public class Switch : MonoBehaviour
     void Start()
     {
         mySprite = GetComponent<SpriteRenderer>();
-        isActive = storedValue.RuntimeValue;
+        isActive = storedValue.value;
         if (isActive)
         {
             ActivateSwitch();
@@ -31,7 +31,7 @@ public class Switch : MonoBehaviour
     public void ActivateSwitch()
     {
         isActive = true;
-        storedValue.RuntimeValue = isActive;
+        storedValue.value = isActive;
         mySprite.sprite = activeSprite;
     }
 }

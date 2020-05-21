@@ -4,19 +4,12 @@ using UnityEngine;
 
 public class ContextClue : MonoBehaviour
 {
-    public GameObject contextClue;
-    public bool contextActive = false;
+    [SerializeField] private SpriteRenderer mySprite;
+    [SerializeField] private bool clueActive = false;
 
-    public void ChangeContext()
+    public void ChangeClue()
     {
-        contextActive = !contextActive;
-        if (contextActive)
-        {
-            contextClue.SetActive(true);
-        }
-        else
-        {
-            contextClue.SetActive(false);
-        }
+        clueActive = !clueActive;
+        mySprite.enabled = clueActive;
     }
 }

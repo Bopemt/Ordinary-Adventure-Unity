@@ -14,7 +14,7 @@ public class Statue : MonoBehaviour
     void Start()
     {
         mySprite = GetComponent<SpriteRenderer>();
-        isActive = storedValue.RuntimeValue;
+        isActive = storedValue.value;
         if (isActive)
         {
             ActivateStatue();
@@ -32,7 +32,7 @@ public class Statue : MonoBehaviour
     public void ActivateStatue()
     {
         isActive = true;
-        storedValue.RuntimeValue = isActive;
+        storedValue.value = isActive;
         mySprite.sprite = activeSprite;
     }
 }

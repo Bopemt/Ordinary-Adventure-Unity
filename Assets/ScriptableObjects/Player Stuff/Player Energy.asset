@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 979b53f6d3b5af945ba7ec548b2a4fda, type: 3}
   m_Name: Player Energy
   m_EditorClassIdentifier: 
-  initialValue: 5
-  RuntimeValue: 5
+  defaultValue: 5
+  value: 5

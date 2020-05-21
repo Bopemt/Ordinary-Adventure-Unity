@@ -5,46 +5,78 @@ using TMPro;
 
 public class Room : MonoBehaviour
 {
-    public Enemy[] enemies;
-    public Breakable[] breakables;
-    public GameObject virtualCamera;
+    [Header("Room name")]
+    [SerializeField] protected bool haveName;
+    [SerializeField] protected string locationName;
+    [SerializeField] protected TextMeshProUGUI textMesh;
 
-    public virtual void OnTriggerEnter2D(Collider2D other)
+    [Header("Camera")]
+    [SerializeField] protected GameObject virtualCamera;
+
+    [Header("Objects")]
+    [SerializeField] protected GameObject[] respawnObjects;
+
+    protected virtual void Start()
+    {
+        DespawnObjects();
+    }
+
+    protected virtual void OnTriggerEnter2D(Collider2D other)
     {
         if(other.CompareTag("Player") && !other.isTrigger)
         {
-            for(int i = 0; i < enemies.Length; i++)
-            {
-                ChangeActivation(enemies[i], true);
-            }
-
-            for (int i = 0; i < breakables.Length; i++)
-            {
-                ChangeActivation(breakables[i], true);
-            }
+            RespawnObjects();
             virtualCamera.SetActive(true);
+            if (haveName)
+            {
+                StartCoroutine(placeNameCo());
+            }
         }
     }
 
-    public virtual void OnTriggerExit2D(Collider2D other)
+    protected void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Player") && !other.isTrigger)
         {
-            for (int i = 0; i < enemies.Length; i++)
-            {
-                ChangeActivation(enemies[i], false);
-            }
-
-            for (int i = 0; i < breakables.Length; i++)
-            {
-                ChangeActivation(breakables[i], false);
-            }
             virtualCamera.SetActive(false);
+            DespawnObjects();
         }
     }
 
-    public void ChangeActivation(Component component, bool activation)
+    protected void RespawnObjects()
     {
-        component.gameObject.SetActive(activation);
+        foreach(GameObject _object in respawnObjects)
+        {
+            _object.SetActive(true);
+            GenericHealth temp = _object.GetComponentInChildren<GenericHealth>();
+            if (temp)
+            {
+                temp.FullHeal();
+            }
+            ResetToPosition reset = _object.GetComponent<ResetToPosition>();
+            {
+                if (reset)
+                {
+                    reset.ResetPosition();
+                }
+            }
+        }
+    }
+
+    protected void DespawnObjects()
+    {
+        foreach(GameObject _object in respawnObjects)
+        {
+            _object.SetActive(false);
+        }
+    }
+
+    protected IEnumerator placeNameCo()
+    {
+        textMesh.gameObject.SetActive(true);
+        textMesh.text = locationName;
+        textMesh.CrossFadeAlpha(0, 3.5f, false);
+        yield return new WaitForSeconds(4f);
+        textMesh.gameObject.SetActive(false);
     }
 }
