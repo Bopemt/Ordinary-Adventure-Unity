@@ -15,9 +15,10 @@ MonoBehaviour:
   myName: Soldier Sword
   myDescription: Old Sword
   mySprite: {fileID: 21300000, guid: d293ad70cc4b8584fb8260d1304d5c56, type: 3}
-  numberHeld: 0
+  price: 30
+  numberHeld: 1
   usable: 0
-  unique: 1
+  unique: 0
   pocket: 1
   weapon: 1
   rangeWeapon: 0
@@ -26,4 +27,26 @@ MonoBehaviour:
   energyCost: 0
   thisEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: aae7ed23e46c6674c925c8e4f233503e, type: 2}
+        m_MethodName: SetValue
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000}
+          m_ObjectArgumentAssemblyTypeName: InventoryItem, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: b6b40472f4f81444e8cc6b389b1951d1, type: 2}
+        m_MethodName: SetValue
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 2
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

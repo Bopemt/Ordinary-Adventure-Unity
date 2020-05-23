@@ -15,9 +15,10 @@ MonoBehaviour:
   myName: Bow
   myDescription: Sharpy bow
   mySprite: {fileID: 21300000, guid: ffcffab32fc023146b8021cf1dfb1b10, type: 3}
-  numberHeld: 0
+  price: 50
+  numberHeld: 1
   usable: 0
-  unique: 1
+  unique: 0
   pocket: 1
   weapon: 1
   rangeWeapon: 1
@@ -26,4 +27,37 @@ MonoBehaviour:
   energyCost: 1
   thisEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: aae7ed23e46c6674c925c8e4f233503e, type: 2}
+        m_MethodName: SetValue
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000}
+          m_ObjectArgumentAssemblyTypeName: InventoryItem, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 60da87f1ae6ab2848b34f3f8123f5223, type: 2}
+        m_MethodName: SetValue
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: b6b40472f4f81444e8cc6b389b1951d1, type: 2}
+        m_MethodName: SetValue
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

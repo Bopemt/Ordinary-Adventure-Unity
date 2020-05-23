@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Heart : PowerUp
 {
-    public FloatValue playerHealth;
+    public PlayerFloatValue playerHealth;
     public float amountToIncrease;
 
     public void OnTriggerEnter2D(Collider2D other)
@@ -13,9 +13,9 @@ public class Heart : PowerUp
         if(other.CompareTag("Player") && !other.isTrigger)
         {
             playerHealth.value += amountToIncrease;
-            if(playerHealth.value > playerHealth.defaultValue)
+            if(playerHealth.value > playerHealth.maxValue)
             {
-                playerHealth.value = playerHealth.defaultValue;
+                playerHealth.value = playerHealth.maxValue;
             }
             powerUpSignal.Raise();
             Destroy(this.gameObject);

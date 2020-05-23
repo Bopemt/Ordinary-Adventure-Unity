@@ -193,4 +193,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   otherTag: enemy
-  damageAmount: {fileID: 11400000, guid: e55e2003356390646acd4dfe7fe43f54, type: 2}
+  damageAmount: {fileID: 11400000, guid: b6b40472f4f81444e8cc6b389b1951d1, type: 2}

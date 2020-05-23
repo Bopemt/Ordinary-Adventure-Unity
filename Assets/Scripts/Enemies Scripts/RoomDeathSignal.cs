@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class RoomDeathSignal : MonoBehaviour
 {
-    [Header("Death Signals")]
     [SerializeField] public SignalCore roomSignal;
 
-    void Update()
+    public void DeathCheck()
     {
         if(gameObject.GetComponent<EnemyHealth>().currentHealth <= 0)
         {

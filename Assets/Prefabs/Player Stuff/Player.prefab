@@ -47,6 +47,85 @@ MonoBehaviour:
   passiveIncrease: 0.005
   increaseDelay: 3
   energySignal: {fileID: 11400000, guid: 4646cb278988c874f96c44cbcb2089e2, type: 2}
+--- !u!1 &1615591401721816682
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5689968229361616930}
+  - component: {fileID: 735167342921061987}
+  - component: {fileID: 7016050127153463647}
+  m_Layer: 12
+  m_Name: Player Level
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5689968229361616930
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1615591401721816682}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4794786636751675913}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &735167342921061987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1615591401721816682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44765248089fe484cb42500d7379665f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerLevel: {fileID: 11400000, guid: 4c377e28ef673124caa1ae67c2f9e678, type: 2}
+  playerExp: {fileID: 11400000, guid: c872d5399c4edab4dbf3e48e4f8b5662, type: 2}
+  playerHealth: {fileID: 7880788925228257120}
+  levelSignal: {fileID: 11400000, guid: 02535898a7d3394449d140e725a3539e, type: 2}
+  levelUpEffect: {fileID: 8932647069573058174, guid: 2e0e3d6aaea318e4c8c4cc8980791266,
+    type: 3}
+  expToNextLvl: 50
+  expIncrease: 50
+--- !u!114 &7016050127153463647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1615591401721816682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26b856379826c884f896e11afb19c36c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  signal: {fileID: 11400000, guid: beeadcfed332c914d85d86a4e33fc82b, type: 2}
+  signalEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 735167342921061987}
+        m_MethodName: AddExperience
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1863353743853179788
 GameObject:
   m_ObjectHideFlags: 0
@@ -57,6 +136,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6557471942644242878}
   - component: {fileID: 6205407445922335582}
+  - component: {fileID: 505548257}
   m_Layer: 12
   m_Name: Movement & Attack
   m_TagString: Untagged
@@ -90,8 +170,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48eda234e7424ac4ebe33f9f7e742a59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 0
   myRigidbody: {fileID: 4794786636751675914}
+  speedPFV: {fileID: 11400000, guid: b05e968687fb3e042986352992d32185, type: 2}
   anim: {fileID: 5425537357534504585}
   startingPosition: {fileID: 11400000, guid: 01315388330a5574ab80409e8b393dea, type: 2}
   myState: {fileID: 601586769725940324}
@@ -100,6 +181,33 @@ MonoBehaviour:
   rangeAttack: {fileID: 11400000, guid: f88c57dffd9698a4f87a8ed269778148, type: 2}
   currentWeapon: {fileID: 11400000, guid: aae7ed23e46c6674c925c8e4f233503e, type: 2}
   playerEnergy: {fileID: 1919454010275797707}
+--- !u!114 &505548257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1863353743853179788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26b856379826c884f896e11afb19c36c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  signal: {fileID: 11400000, guid: 02535898a7d3394449d140e725a3539e, type: 2}
+  signalEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: b05e968687fb3e042986352992d32185, type: 2}
+        m_MethodName: LevelUp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2501293982288643049
 GameObject:
   m_ObjectHideFlags: 0
@@ -111,6 +219,7 @@ GameObject:
   - component: {fileID: 5055629068556969421}
   - component: {fileID: 7880788925228257120}
   - component: {fileID: 2176928286250853873}
+  - component: {fileID: 258453781}
   m_Layer: 12
   m_Name: Player Health
   m_TagString: Player
@@ -144,7 +253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50b66ecccd023aa419da03ed04de9de3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 11400000, guid: c044850f3f932234dacd8c8cf216b001, type: 2}
+  health: {fileID: 11400000, guid: f9c71b4caca2e5b4bbd4828e1868d113, type: 2}
   currentHealth: 0
   healthSignal: {fileID: 11400000, guid: 27f156bc35f3df5469875b27c00a4716, type: 2}
   flash: {fileID: 6135280441275031399}
@@ -174,6 +283,33 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6876869, y: 0.5927658}
   m_EdgeRadius: 0
+--- !u!114 &258453781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2501293982288643049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26b856379826c884f896e11afb19c36c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  signal: {fileID: 11400000, guid: 02535898a7d3394449d140e725a3539e, type: 2}
+  signalEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: f9c71b4caca2e5b4bbd4828e1868d113, type: 2}
+        m_MethodName: LevelUp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3038072377549636443
 GameObject:
   m_ObjectHideFlags: 0
@@ -244,7 +380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bba07ce91f1dabb4d9ab1f8cf891a79c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 11400000, guid: c044850f3f932234dacd8c8cf216b001, type: 2}
+  health: {fileID: 11400000, guid: b6b40472f4f81444e8cc6b389b1951d1, type: 2}
   currentHealth: 0
   playerHealth: {fileID: 7880788925228257120}
 --- !u!1 &4115830557432443034
@@ -390,7 +526,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   otherTag: enemy
-  damageAmount: {fileID: 11400000, guid: e55e2003356390646acd4dfe7fe43f54, type: 2}
+  damageAmount: {fileID: 11400000, guid: b6b40472f4f81444e8cc6b389b1951d1, type: 2}
 --- !u!1 &4794786635894595520
 GameObject:
   m_ObjectHideFlags: 0
@@ -485,7 +621,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   otherTag: enemy
-  damageAmount: {fileID: 11400000, guid: e55e2003356390646acd4dfe7fe43f54, type: 2}
+  damageAmount: {fileID: 11400000, guid: b6b40472f4f81444e8cc6b389b1951d1, type: 2}
 --- !u!1 &4794786635950666764
 GameObject:
   m_ObjectHideFlags: 0
@@ -704,7 +840,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   otherTag: enemy
-  damageAmount: {fileID: 11400000, guid: e55e2003356390646acd4dfe7fe43f54, type: 2}
+  damageAmount: {fileID: 11400000, guid: b6b40472f4f81444e8cc6b389b1951d1, type: 2}
 --- !u!1 &4794786636741153694
 GameObject:
   m_ObjectHideFlags: 0
@@ -798,7 +934,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   otherTag: enemy
-  damageAmount: {fileID: 11400000, guid: e55e2003356390646acd4dfe7fe43f54, type: 2}
+  damageAmount: {fileID: 11400000, guid: b6b40472f4f81444e8cc6b389b1951d1, type: 2}
 --- !u!1 &4794786636751675917
 GameObject:
   m_ObjectHideFlags: 0
@@ -843,6 +979,7 @@ Transform:
   - {fileID: 6557471942644242878}
   - {fileID: 5866322075116665534}
   - {fileID: 6041262851191635109}
+  - {fileID: 5689968229361616930}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

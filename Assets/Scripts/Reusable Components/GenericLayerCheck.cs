@@ -12,7 +12,10 @@ public class GenericLayerCheck : MonoBehaviour
     {
         target = GameObject.FindWithTag("Player").transform;
         defaultOrder = mySprite.sortingOrder;
-        mySprite = GetComponent<SpriteRenderer>();
+        if (!mySprite)
+        {
+            mySprite = GetComponent<SpriteRenderer>();
+        }
     }
 
     protected void CheckLayer()

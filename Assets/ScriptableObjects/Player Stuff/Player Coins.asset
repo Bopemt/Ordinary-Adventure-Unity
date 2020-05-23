@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 979b53f6d3b5af945ba7ec548b2a4fda, type: 3}
   m_Name: Player Coins
   m_EditorClassIdentifier: 
-  initialValue: 0
-  runtimeValue: 0
+  defaultValue: 100
+  maxValue: 100
+  value: 100

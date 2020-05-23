@@ -249,6 +249,7 @@ Transform:
   - {fileID: 6181195543419515275}
   - {fileID: 7769002251126819331}
   - {fileID: 6473300782807007899}
+  - {fileID: 6241301022146032994}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -397,6 +398,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b43741ddb59c41b46860273bbdc55b46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  resetPosition: {x: 0, y: 0}
 --- !u!1 &7655371198027517341
 GameObject:
   m_ObjectHideFlags: 0
@@ -412,7 +414,7 @@ GameObject:
   - component: {fileID: 7831385355794784494}
   - component: {fileID: 8261904424552101208}
   m_Layer: 8
-  m_Name: Health & Damage & Loot
+  m_Name: Health & Damage
   m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -446,8 +448,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: {fileID: 11400000, guid: e61e6d82bf6b37044b89683027b51577, type: 2}
   currentHealth: 0
-  deathEffect: {fileID: 6401770858294529092, guid: 62e991649e373f5479b7b67557c2ee54,
-    type: 3}
+  death: {fileID: 1303053624517396949}
 --- !u!61 &691346005724874329
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -564,5 +565,67 @@ MonoBehaviour:
   anim: {fileID: 9140120852431036081}
   chaseRadius: 4
   attackRadius: 0
-  target: {fileID: 4794786636751675913, guid: 6a4748808c8038e4a8d3354733c01c11, type: 3}
+  target: {fileID: 0}
   inAttackRange: 0
+--- !u!1 &8703901114318599452
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6241301022146032994}
+  - component: {fileID: 1303053624517396949}
+  - component: {fileID: 2770796004897052928}
+  m_Layer: 8
+  m_Name: Death Stuff
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6241301022146032994
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8703901114318599452}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4467563121675109418}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1303053624517396949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8703901114318599452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77ee99e82fdc302439f9a0579a4f228e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathEffect: {fileID: 6401770858294529092, guid: 62e991649e373f5479b7b67557c2ee54,
+    type: 3}
+  deathSignal: {fileID: 11400000, guid: beeadcfed332c914d85d86a4e33fc82b, type: 2}
+  playerExp: {fileID: 11400000, guid: c872d5399c4edab4dbf3e48e4f8b5662, type: 2}
+  experience: 10
+--- !u!114 &2770796004897052928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8703901114318599452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b94e8719627f1c4bb212fa351477e55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisLoot: {fileID: 11400000, guid: 55f341bc2d68d0b45afa4340db57903b, type: 2}

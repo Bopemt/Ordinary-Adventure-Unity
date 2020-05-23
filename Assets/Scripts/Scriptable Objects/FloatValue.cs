@@ -2,16 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Values/Float Value", fileName = "New String Value")]
+[CreateAssetMenu(menuName = "Values/Float Value", fileName = "New Float Value")]
 [System.Serializable]
 public class FloatValue : ScriptableObject
 {
     public float defaultValue;
+
+    public float maxValue;
     
     public float value;
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
-        value = defaultValue;
+        maxValue = defaultValue;
+        value = maxValue;
+    }
+
+    public void SetValue(float newValue)
+    {
+        value = newValue;
     }
 }

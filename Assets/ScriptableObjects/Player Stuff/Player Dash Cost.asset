@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Player Dash Cost
   m_EditorClassIdentifier: 
   defaultValue: 1
+  maxValue: 1
   value: 1

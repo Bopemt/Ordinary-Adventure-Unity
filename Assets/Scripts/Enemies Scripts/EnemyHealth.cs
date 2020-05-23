@@ -4,31 +4,16 @@ using UnityEngine;
 
 public class EnemyHealth : GenericHealth
 {
-    [SerializeField] private GameObject deathEffect;
+    //[SerializeField] private GameObject deathEffect;
+    //[SerializeField] private SignalCore deathSignal;
+    [SerializeField] private Death death;
 
     public override void Damage(float amountToDamage)
     {
         base.Damage(amountToDamage);
         if(currentHealth <= 0)
         {
-            MakeLoot loot = GetComponent<MakeLoot>();
-            if (loot)
-            {
-                loot.DropLoot();
-            }
-            RoomDeathSignal temp = GetComponent<RoomDeathSignal>();
-            if (temp)
-            {
-                temp.roomSignal.Raise();
-            }
-            Die();
+            death.Die();
         }
-    }
-
-    public void Die()
-    {
-        this.transform.parent.gameObject.SetActive(false);
-        GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
-        Destroy(effect, 1f);
     }
 }

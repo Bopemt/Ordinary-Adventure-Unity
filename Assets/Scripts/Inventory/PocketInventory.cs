@@ -8,9 +8,7 @@ public class PocketInventory : MonoBehaviour
     [SerializeField] private PocketSlot[] pocketSlots;
     [SerializeField] private GenericStateMachine playerState;
     [SerializeField] private PlayerInventory playerInventory;
-    [SerializeField] private WeaponValue currentWeapon;
-    [SerializeField] private FloatValue playerDamage;
-    [SerializeField] private FloatValue playerRangeAttackCost;
+    [SerializeField] private PlayerFloatValue playerDamage;
     [SerializeField] private CurrentWeaponSlot weaponSlot;
     [SerializeField] private Animation anim;
     private bool hided = false;
@@ -27,7 +25,7 @@ public class PocketInventory : MonoBehaviour
 
     private void Start()
     {
-        playerInventory.CleanOutOfNull();
+        //playerInventory.CleanOutOfNull();
         UpdateSlots();
     }
 
@@ -63,12 +61,9 @@ public class PocketInventory : MonoBehaviour
                 {
                     if (pocketInventory.myInventory[i])
                     {
-                        playerInventory.UseItem(pocketInventory.myInventory[i]);
+                        pocketInventory.myInventory[i].Use();
                         if (pocketInventory.myInventory[i].weapon)
                         {
-                            currentWeapon.value = pocketInventory.myInventory[i];
-                            playerDamage.value = pocketInventory.myInventory[i].damage;
-                            playerRangeAttackCost.value = pocketInventory.myInventory[i].energyCost;
                             weaponSlot.UpdateImage();
                         }
                         else if (pocketInventory.myInventory[i].numberHeld <= 0)
@@ -80,6 +75,14 @@ public class PocketInventory : MonoBehaviour
                     }
                 }
             }
+        }
+    }
+
+    public void SetWeaponDamage(ItemValue weapon)
+    {
+        if (weapon.value)
+        {
+            playerDamage.SetValue(weapon.value.damage);
         }
     }
 

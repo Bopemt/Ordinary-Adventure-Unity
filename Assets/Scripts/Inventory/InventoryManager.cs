@@ -8,19 +8,15 @@ public class InventoryManager : MonoBehaviour
 {
     [Header("Inventory Stuff")]
     public PlayerInventory playerInventory;
-    [SerializeField] private GameObject blankInventorySlot;
-    [SerializeField] private GameObject inventoryPanel;
-    [SerializeField] private GameObject inventoryHolder;
-    [SerializeField] private GenericStateMachine playerState;
-    [SerializeField] private PocketInventory pocketInventory;
+    [SerializeField] protected GameObject blankInventorySlot;
+    [SerializeField] protected GameObject inventoryPanel;
+    [SerializeField] protected GameObject inventoryHolder;
+    [SerializeField] protected GenericStateMachine playerState;
+    [SerializeField] protected PocketInventory pocketInventory;
 
     [Header("Description & Use Stuff")]
-    [SerializeField] private TextMeshProUGUI descriptionText;
-    [SerializeField] private TextMeshProUGUI nameText;
-    [SerializeField] private TextMeshProUGUI attackSpeedText;
-    [SerializeField] private TextMeshProUGUI damageText;
-    [SerializeField] private Button useButton;
-    public InventoryItem currentItem;
+    public Description description;
+    public ItemValue currentItem;
 
     private KeyCode[] keyCodes = {
          KeyCode.Alpha1,
@@ -47,7 +43,6 @@ public class InventoryManager : MonoBehaviour
                 inventoryHolder.gameObject.SetActive(true);
                 playerState.myState = GenericState.inventory;
                 MakeInventorySlots();
-                ClearDescriptionAndButton();
                 Time.timeScale = 0.000001f;
             }
         }
@@ -58,26 +53,26 @@ public class InventoryManager : MonoBehaviour
             ClearInventorySlots();
             Time.timeScale = 1;
         }
-        else if (currentItem && playerState.myState == GenericState.inventory)
+        else if (currentItem.value && playerState.myState == GenericState.inventory)
         {
-            if (currentItem.pocket)
+            if (currentItem.value.pocket)
             {
                 for (int i = 0; i < keyCodes.Length; i++)
                 {
                     if (Input.GetKeyDown(keyCodes[i]))
                     {
-                        if (pocketInventory.pocketInventory.myInventory.Contains(currentItem))
+                        if (pocketInventory.pocketInventory.myInventory.Contains(currentItem.value))
                         {
-                            pocketInventory.ClearSlot(currentItem);
+                            pocketInventory.ClearSlot(currentItem.value);
                         }
-                        pocketInventory.Setup(currentItem, i);
+                        pocketInventory.Setup(currentItem.value, i);
                     }
                 }
             }
         }
     }
 
-    void MakeInventorySlots()
+    protected virtual void MakeInventorySlots()
     {
         if (playerInventory)
         {
@@ -96,40 +91,7 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    //private void OnEnable()
-    //{
-    //    MakeInventorySlots();
-    //    ClearDescriptionAndButton();
-    //    Time.timeScale = 0.000001f;
-    //}
-
-    //private void OnDisable()
-    //{
-    //    ClearInventorySlots();
-    //    Time.timeScale = 1;
-    //}
-
-    public void SetupDescriptionAndButton(InventoryItem newItem)
-    {
-        currentItem = newItem;
-        descriptionText.text = newItem.myDescription;
-        nameText.text = newItem.myName;
-        useButton.interactable = newItem.usable;
-        if (currentItem.weapon)
-        {
-            attackSpeedText.enabled = true;
-            damageText.enabled = true;
-            attackSpeedText.text = "AS: " + 0.3f / newItem.attackDuration;
-            damageText.text = "DMG: " + newItem.damage;
-        }
-        else
-        {
-            attackSpeedText.enabled = false;
-            damageText.enabled = false;
-        }
-    }
-
-    void ClearInventorySlots()
+    protected virtual void ClearInventorySlots()
     {
         for(int i = 0; i < inventoryPanel.transform.childCount; i++)
         {
@@ -137,33 +99,23 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    void ClearDescriptionAndButton()
+    public virtual void UseButtonPressed()
     {
-        currentItem = null;
-        descriptionText.text = "";
-        nameText.text = "";
-        useButton.interactable = false;
-        attackSpeedText.enabled = false;
-        damageText.enabled = false;
-    }
-
-    public void UseButtonPressed()
-    {
-        if (currentItem)
+        if (currentItem.value)
         {
-            playerInventory.UseItem(currentItem);
-            if (currentItem.numberHeld <= 0)
+            currentItem.value.Use();
+            if (currentItem.value.numberHeld <= 0)
             {
-                if (pocketInventory.pocketInventory.myInventory.Contains(currentItem))
+                if (pocketInventory.pocketInventory.myInventory.Contains(currentItem.value))
                 {
-                    pocketInventory.ClearSlot(currentItem);
+                    pocketInventory.ClearSlot(currentItem.value);
                 }
-                playerInventory.RemoveItem(currentItem);
-                ClearDescriptionAndButton();
+                playerInventory.RemoveItem(currentItem.value);
+                description.ClearDescriptionAndButton();
             }
-            if (pocketInventory.pocketInventory.myInventory.Contains(currentItem))
+            if (pocketInventory.pocketInventory.myInventory.Contains(currentItem.value))
             {
-                pocketInventory.UsePressed(currentItem);
+                pocketInventory.UsePressed(currentItem.value);
             }
             ClearInventorySlots();
             MakeInventorySlots();

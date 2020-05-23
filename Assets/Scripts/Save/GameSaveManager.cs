@@ -39,6 +39,13 @@ public class GameSaveManager : MonoBehaviour
                         break;
                     case FloatValue ftmp:
                         ftmp.value = ftmp.defaultValue;
+                        ftmp.maxValue = ftmp.defaultValue;
+                        break;
+                    case PlayerInventory inv:
+                        inv.myInventory.Clear();
+                        break;
+                    case ItemValue wv:
+                        wv.value = wv.defaultValue;
                         break;
                     default:
                         break;

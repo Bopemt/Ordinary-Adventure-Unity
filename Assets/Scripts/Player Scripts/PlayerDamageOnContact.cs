@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerDamageOnContact : GenericDamage
 {
     [SerializeField] private string otherTag;
-    [SerializeField] private FloatValue damageAmount;
+    [SerializeField] private PlayerFloatValue damageAmount;
     private float damage;
 
     private void OnEnable()

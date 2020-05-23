@@ -71,7 +71,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 4479181887894498110, guid: 75f22b2562d1bae41b6857b5444ba0d3,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -183,7 +183,7 @@ MonoBehaviour:
   playerInRange: 0
   context: {fileID: 11400000, guid: 7b847bedd6acfae4a96992eb62b3b48b, type: 2}
   otherTag: Player
-  text: Kakashka
+  text: Dungeon
   speakerName: 
   stringText: {fileID: 11400000, guid: 80381a45a8f50fd479254c384e073d56, type: 2}
   stringName: {fileID: 11400000, guid: 38a3c48f396c2e34fad7b6abe54320be, type: 2}

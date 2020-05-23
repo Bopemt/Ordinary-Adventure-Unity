@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class CurrentWeaponSlot : MonoBehaviour
 {
     [SerializeField] private Image weaponImage;
-    [SerializeField] private WeaponValue currentWeapon;
+    [SerializeField] private ItemValue currentWeapon;
 
     private void OnEnable()
     {

@@ -21,6 +21,21 @@ public class PlayerInventory : ScriptableObject
         }
     }
 
+    public void Sell(InventoryItem newItem)
+    {
+        if (myInventory.Contains(newItem))
+        {
+            if(newItem.numberHeld > 0)
+            {
+                newItem.numberHeld--;
+            }
+            else
+            {
+                RemoveItem(newItem);
+            }
+        }
+    }
+
     public void RemoveItem(InventoryItem newItem)
     {
         if (myInventory.Contains(newItem))
@@ -33,13 +48,9 @@ public class PlayerInventory : ScriptableObject
     {
         if (myInventory.Contains(newItem))
         {
-            if(newItem.numberHeld > 0)
+            if (newItem.numberHeld > 0)
             {
-                if (newItem.usable)
-                {
-                    newItem.numberHeld--;
-                    newItem.Use();
-                }
+                newItem.numberHeld--;
             }
         }
     }
@@ -56,6 +67,7 @@ public class PlayerInventory : ScriptableObject
 
     public void CleanOutOfNull()
     {
+        myInventory.RemoveAll(item => item == null);
         myInventory.RemoveAll(item => item.numberHeld <= 0);
     }
 }

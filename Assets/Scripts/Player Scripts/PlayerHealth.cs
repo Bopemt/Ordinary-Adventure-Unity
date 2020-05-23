@@ -37,4 +37,11 @@ public class PlayerHealth : GenericHealth
         health.value = currentHealth;
         healthSignal.Raise();
     }
+
+    public override void FullHeal()
+    {
+        health.value = health.maxValue;
+        currentHealth = health.value;
+        healthSignal.Raise();
+    }
 }

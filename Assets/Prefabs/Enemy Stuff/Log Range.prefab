@@ -82,6 +82,7 @@ Transform:
   - {fileID: 8534856492958836754}
   - {fileID: 5217675499796419482}
   - {fileID: 2703257916268729846}
+  - {fileID: 6431608357027639202}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -230,6 +231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b43741ddb59c41b46860273bbdc55b46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  resetPosition: {x: 0, y: 0}
 --- !u!1 &2181460375734377691
 GameObject:
   m_ObjectHideFlags: 0
@@ -335,11 +337,10 @@ GameObject:
   - component: {fileID: 3325034515594136924}
   - component: {fileID: 1222472673008741211}
   - component: {fileID: 3035925180344819648}
-  - component: {fileID: 2574337539066345340}
   - component: {fileID: 5699104286459836791}
   - component: {fileID: 5841674589400722625}
   m_Layer: 8
-  m_Name: Health & Damage & Loot
+  m_Name: Health & Damage
   m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -373,8 +374,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: {fileID: 11400000, guid: a6be1163a21da1a44a4c698107bf2d8b, type: 2}
   currentHealth: 0
-  deathEffect: {fileID: 6401770858294529092, guid: 62e991649e373f5479b7b67557c2ee54,
-    type: 3}
+  death: {fileID: 6486297904674139143}
 --- !u!61 &3035925180344819648
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -401,19 +401,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.7489128, y: 0.5511041}
   m_EdgeRadius: 0
---- !u!114 &2574337539066345340
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5297558971504120836}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b94e8719627f1c4bb212fa351477e55, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  thisLoot: {fileID: 11400000, guid: 55f341bc2d68d0b45afa4340db57903b, type: 2}
 --- !u!114 &5699104286459836791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -491,7 +478,7 @@ MonoBehaviour:
   projectile: {fileID: 589130815188133115, guid: e3e658deacbbf7d498b5918da8187362,
     type: 3}
   fireDelay: 1.8
-  canFire: 1
+  canFire: 0
 --- !u!114 &2174574491756250301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -584,3 +571,65 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.3040886}
   m_EdgeRadius: 0
+--- !u!1 &7631802529571882621
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6431608357027639202}
+  - component: {fileID: 6486297904674139143}
+  - component: {fileID: 5129041087582411017}
+  m_Layer: 8
+  m_Name: Death Stuff
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6431608357027639202
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7631802529571882621}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2181460376151170483}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6486297904674139143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7631802529571882621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77ee99e82fdc302439f9a0579a4f228e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathEffect: {fileID: 6401770858294529092, guid: 62e991649e373f5479b7b67557c2ee54,
+    type: 3}
+  deathSignal: {fileID: 11400000, guid: beeadcfed332c914d85d86a4e33fc82b, type: 2}
+  playerExp: {fileID: 11400000, guid: c872d5399c4edab4dbf3e48e4f8b5662, type: 2}
+  experience: 10
+--- !u!114 &5129041087582411017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7631802529571882621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b94e8719627f1c4bb212fa351477e55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisLoot: {fileID: 11400000, guid: 55f341bc2d68d0b45afa4340db57903b, type: 2}

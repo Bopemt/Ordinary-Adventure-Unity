@@ -11,6 +11,7 @@ public class InventoryItem : ScriptableObject
     public string myName;
     public string myDescription;
     public Sprite mySprite;
+    public float price;
     public int numberHeld;
     public bool usable;
     public bool unique;

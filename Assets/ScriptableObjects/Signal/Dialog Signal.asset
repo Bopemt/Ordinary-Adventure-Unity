@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f25b71579d4a0f45b38b9ffda8566db, type: 3}
   m_Name: Dialog Signal
   m_EditorClassIdentifier: 
-  listeners: []
+  listeners:
+  - {fileID: 0}

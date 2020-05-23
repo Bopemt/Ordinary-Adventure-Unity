@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerMovement : Movement
 {
+    [SerializeField] private PlayerFloatValue speedPFV;
+
     [Header("New")]
     [SerializeField] private AnimatorController anim;
     [SerializeField] private VectorValue startingPosition;
@@ -13,19 +15,17 @@ public class PlayerMovement : Movement
     [Header("Attack Stuff")]
     [SerializeField] private GenericAbility currentAbility;
     [SerializeField] private GenericAbility rangeAttack;
-    [SerializeField] private WeaponValue currentWeapon;
+    [SerializeField] private ItemValue currentWeapon;
     [SerializeField] private GenericEnergy playerEnergy;
 
     private Vector2 tempMovement = Vector2.down;
     private Vector2 faceDirection = Vector2.down;
 
-    //[Header("Inventory Panel")]
-    //[SerializeField] private InventoryManager myInventoryPanel;
-
     void Start()
     {
         myState.ChangeState(GenericState.idle);
         transform.parent.position = startingPosition.value;
+        speed = speedPFV.value;
     }
 
     void Update()
@@ -58,7 +58,7 @@ public class PlayerMovement : Movement
     public bool IsRestrictedState(GenericState currentState)
     {
         if (currentState == GenericState.attack || currentState == GenericState.ability || currentState == GenericState.pause 
-            || myState.myState == GenericState.interact || myState.myState == GenericState.inventory)
+            || myState.myState == GenericState.interact || myState.myState == GenericState.inventory || myState.myState == GenericState.shop)
         {
             return true;
         }
@@ -85,7 +85,7 @@ public class PlayerMovement : Movement
                 }
             }
         }
-        else if (Input.GetButtonDown("Ability") /*&& myState.myState != GenericState.interact && myState.myState != GenericState.inventory*/)
+        else if (Input.GetButtonDown("Ability"))
         {
             if (currentAbility)
             {
@@ -94,19 +94,6 @@ public class PlayerMovement : Movement
                 Motion(tempMovement);
             }
         }
-        //else if (Input.GetButtonDown("Inventory") && myState.myState != GenericState.interact)
-        //{
-        //    if (myInventoryPanel.gameObject.activeInHierarchy)
-        //    {
-        //        myInventoryPanel.gameObject.SetActive(false);
-        //        SetState(GenericState.idle);
-        //    }
-        //    else
-        //    {
-        //        myInventoryPanel.gameObject.SetActive(true);
-        //        SetState(GenericState.inventory);
-        //    }
-        //}
         else if (tempMovement.magnitude >= 0/*myState.myState != GenericState.interact && myState.myState != GenericState.inventory*/)
         {
             tempMovement.x = Input.GetAxisRaw("Horizontal");
@@ -133,7 +120,8 @@ public class PlayerMovement : Movement
         else
         {
             anim.SetAnimParameter("moving", false);
-            if (myState.myState != GenericState.attack && myState.myState != GenericState.interact && myState.myState != GenericState.inventory && myState.myState != GenericState.ability)
+            if (myState.myState != GenericState.attack && myState.myState != GenericState.interact && myState.myState != GenericState.inventory 
+                && myState.myState != GenericState.ability && myState.myState != GenericState.shop)
             {
                 SetState(GenericState.idle);
             }

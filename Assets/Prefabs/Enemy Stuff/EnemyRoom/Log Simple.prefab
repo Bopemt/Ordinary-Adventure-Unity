@@ -11,12 +11,10 @@ GameObject:
   - component: {fileID: 8439143496082516781}
   - component: {fileID: 5462340099434073386}
   - component: {fileID: 8149541528901056945}
-  - component: {fileID: 8683181219546763533}
-  - component: {fileID: 1454223069323534086}
   - component: {fileID: 732104443575323312}
-  - component: {fileID: 8683181220014307036}
+  - component: {fileID: 1454223069323534086}
   m_Layer: 8
-  m_Name: Health & Damage & Loot
+  m_Name: Health & Damage
   m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -50,8 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: {fileID: 11400000, guid: e61e6d82bf6b37044b89683027b51577, type: 2}
   currentHealth: 0
-  deathEffect: {fileID: 6401770858294529092, guid: 62e991649e373f5479b7b67557c2ee54,
-    type: 3}
+  death: {fileID: 3974651030401188605}
 --- !u!61 &8149541528901056945
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -78,7 +75,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.7489128, y: 0.5511041}
   m_EdgeRadius: 0
---- !u!114 &8683181219546763533
+--- !u!114 &732104443575323312
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -87,10 +84,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1350390337021080181}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b94e8719627f1c4bb212fa351477e55, type: 3}
+  m_Script: {fileID: 11500000, guid: b284ca656e8abd9478bbcb01ec663158, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thisLoot: {fileID: 11400000, guid: 55f341bc2d68d0b45afa4340db57903b, type: 2}
+  otherTag: Player
+  damageAmount: 3
 --- !u!114 &1454223069323534086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106,33 +104,6 @@ MonoBehaviour:
   thrust: 1
   knockTime: 0.2
   otherTag: Player
---- !u!114 &732104443575323312
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1350390337021080181}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b284ca656e8abd9478bbcb01ec663158, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  otherTag: Player
-  damageAmount: 3
---- !u!114 &8683181220014307036
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1350390337021080181}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6fc2eac263c07f41902239f5a174067, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  roomSignal: {fileID: 11400000, guid: d174b9ed10008774ebe81622b5a49690, type: 2}
 --- !u!1 &1649073945334573328
 GameObject:
   m_ObjectHideFlags: 0
@@ -183,6 +154,82 @@ MonoBehaviour:
   attackRadius: 0
   target: {fileID: 0}
   inAttackRange: 0
+--- !u!1 &4286149614282217485
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 808701886593922298}
+  - component: {fileID: 3974651030401188605}
+  - component: {fileID: 7331632088220578212}
+  - component: {fileID: 1982041785324334290}
+  m_Layer: 8
+  m_Name: Death Stuff
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &808701886593922298
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4286149614282217485}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5007760536721013698}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3974651030401188605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4286149614282217485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77ee99e82fdc302439f9a0579a4f228e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathEffect: {fileID: 6401770858294529092, guid: 62e991649e373f5479b7b67557c2ee54,
+    type: 3}
+  deathSignal: {fileID: 11400000, guid: beeadcfed332c914d85d86a4e33fc82b, type: 2}
+  playerExp: {fileID: 11400000, guid: c872d5399c4edab4dbf3e48e4f8b5662, type: 2}
+  experience: 10
+--- !u!114 &7331632088220578212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4286149614282217485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b94e8719627f1c4bb212fa351477e55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisLoot: {fileID: 11400000, guid: 55f341bc2d68d0b45afa4340db57903b, type: 2}
+--- !u!114 &1982041785324334290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4286149614282217485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6fc2eac263c07f41902239f5a174067, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomSignal: {fileID: 11400000, guid: d174b9ed10008774ebe81622b5a49690, type: 2}
 --- !u!1 &5007760537003621034
 GameObject:
   m_ObjectHideFlags: 0
@@ -315,6 +362,7 @@ Transform:
   - {fileID: 3263103983418494563}
   - {fileID: 1392123774760056299}
   - {fileID: 231826666044494318}
+  - {fileID: 808701886593922298}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

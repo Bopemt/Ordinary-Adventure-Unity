@@ -43,5 +43,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1a4e0c4207922f448684851836f7742, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: {fileID: 11400000, guid: c044850f3f932234dacd8c8cf216b001, type: 2}
+  playerHealth: {fileID: 11400000, guid: f9c71b4caca2e5b4bbd4828e1868d113, type: 2}
   healthSignal: {fileID: 11400000, guid: 27f156bc35f3df5469875b27c00a4716, type: 2}
