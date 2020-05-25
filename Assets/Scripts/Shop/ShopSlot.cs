@@ -24,9 +24,9 @@ public class ShopSlot : MonoBehaviour
 
     public void ClickedOn()
     {
-        if (thisItem.thisItem)
+        if (thisItem)
         {
-            thisManager.description.SetupDescriptionAndButton(thisItem, true);
+            thisManager.description.SetupDescriptionAndButton(thisItem);
         }
     }
 }

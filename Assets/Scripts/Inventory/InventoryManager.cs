@@ -4,18 +4,14 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public class InventoryManager : MonoBehaviour
+public class InventoryManager : SlotManager
 {
     [Header("Inventory Stuff")]
     public PlayerInventory playerInventory;
-    [SerializeField] protected GameObject blankInventorySlot;
-    [SerializeField] protected GameObject inventoryPanel;
-    [SerializeField] protected GameObject inventoryHolder;
-    [SerializeField] protected GenericStateMachine playerState;
     [SerializeField] protected PocketInventory pocketInventory;
 
     [Header("Description & Use Stuff")]
-    public Description description;
+    public InventoryDescription description;
     public ItemValue currentItem;
 
     private KeyCode[] keyCodes = {
@@ -31,26 +27,26 @@ public class InventoryManager : MonoBehaviour
     {
         if (Input.GetButtonDown("Inventory") && (playerState.myState == GenericState.idle || playerState.myState == GenericState.walk || playerState.myState == GenericState.inventory))
         {
-            if (inventoryHolder.gameObject.activeInHierarchy)
+            if (panelHolder.gameObject.activeInHierarchy)
             {
-                inventoryHolder.gameObject.SetActive(false);
+                panelHolder.gameObject.SetActive(false);
                 playerState.myState = GenericState.idle;
-                ClearInventorySlots();
+                ClearSlots(slotsPanel);
                 Time.timeScale = 1;
             }
             else
             {
-                inventoryHolder.gameObject.SetActive(true);
+                panelHolder.gameObject.SetActive(true);
                 playerState.myState = GenericState.inventory;
-                MakeInventorySlots();
+                MakeSlots(playerInventory.myInventory, blankSlot, slotsPanel);
                 Time.timeScale = 0.000001f;
             }
         }
         else if (Input.GetButtonUp("Pause") && playerState.myState == GenericState.inventory)
         {
-            inventoryHolder.gameObject.SetActive(false);
+            panelHolder.gameObject.SetActive(false);
             playerState.myState = GenericState.idle;
-            ClearInventorySlots();
+            ClearSlots(slotsPanel);
             Time.timeScale = 1;
         }
         else if (currentItem.value && playerState.myState == GenericState.inventory)
@@ -72,30 +68,19 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    protected virtual void MakeInventorySlots()
+    protected void MakeSlots(List<InventoryItem> list, GameObject _blankSlot, GameObject slotPanel)
     {
-        if (playerInventory)
+        foreach (InventoryItem item in list)
         {
-            foreach(InventoryItem item in playerInventory.myInventory)
+            if (item.numberHeld > 0)
             {
-                if (item.numberHeld > 0)
+                InventorySlot newSlot = Instantiate(_blankSlot, transform.position, transform.rotation, slotPanel.transform)
+                 .GetComponent<InventorySlot>();
+                if (newSlot)
                 {
-                    InventorySlot newSlot = Instantiate(blankInventorySlot, transform.position, transform.rotation, inventoryPanel.transform)
-                     .GetComponent<InventorySlot>();
-                    if (newSlot)
-                    {
-                        newSlot.Setup(item, this);
-                    }
+                    newSlot.Setup(item, this);
                 }
             }
-        }
-    }
-
-    protected virtual void ClearInventorySlots()
-    {
-        for(int i = 0; i < inventoryPanel.transform.childCount; i++)
-        {
-            Destroy(inventoryPanel.transform.GetChild(i).gameObject);
         }
     }
 
@@ -117,8 +102,8 @@ public class InventoryManager : MonoBehaviour
             {
                 pocketInventory.UsePressed(currentItem.value);
             }
-            ClearInventorySlots();
-            MakeInventorySlots();
+            ClearSlots(slotsPanel);
+            MakeSlots(playerInventory.myInventory, blankSlot, slotsPanel);
         }
     }
 }

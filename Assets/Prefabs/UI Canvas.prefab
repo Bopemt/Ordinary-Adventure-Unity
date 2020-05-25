@@ -779,7 +779,7 @@ GameObject:
   - component: {fileID: 192424072}
   - component: {fileID: 192424071}
   m_Layer: 5
-  m_Name: Damage Speed
+  m_Name: Coin Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -802,8 +802,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 317.1, y: 35}
-  m_SizeDelta: {x: 150, y: 50}
+  m_AnchoredPosition: {x: 308, y: 35}
+  m_SizeDelta: {x: 194.7, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &192424072
 CanvasRenderer:
@@ -831,7 +831,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'DMG: 5'
+  m_text: 'Coins: 500'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d7746373360fee44b96a22a57cf55cf9, type: 2}
   m_sharedMaterial: {fileID: 8451417330862072724, guid: d7746373360fee44b96a22a57cf55cf9,
@@ -901,7 +901,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 192424071}
-    characterCount: 6
+    characterCount: 10
     spriteCount: 0
     spaceCount: 1
     wordCount: 2
@@ -1568,8 +1568,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 712966387}
+  - component: {fileID: 246320791}
   m_Layer: 5
-  m_Name: Journal Panel
+  m_Name: Quest Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1595,6 +1596,26 @@ RectTransform:
   m_AnchoredPosition: {x: -960, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &246320791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 712966386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80789f7b13eabf64abb0e921f7f9429f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blankSlot: {fileID: 639044767695338612, guid: 34fdd2db856f6614d837be4ee557828f,
+    type: 3}
+  slotsPanel: {fileID: 1160244651}
+  panelHolder: {fileID: 1197573531}
+  playerState: {fileID: 0}
+  currentItem: {fileID: 0}
+  list: {fileID: 11400000, guid: a90ac639db027fd4099077c50afa0288, type: 2}
+  description: {fileID: 598885127}
 --- !u!1 &749554794
 GameObject:
   m_ObjectHideFlags: 0
@@ -1761,7 +1782,7 @@ GameObject:
   - component: {fileID: 889947144}
   - component: {fileID: 889947143}
   m_Layer: 5
-  m_Name: Attack Speed Text
+  m_Name: Exp Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1784,8 +1805,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 135.9, y: 35}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 123.28, y: 35}
+  m_SizeDelta: {x: 174.75, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &889947144
 CanvasRenderer:
@@ -1813,7 +1834,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'AS: 5'
+  m_text: 'Exp: 500'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d7746373360fee44b96a22a57cf55cf9, type: 2}
   m_sharedMaterial: {fileID: 8451417330862072724, guid: d7746373360fee44b96a22a57cf55cf9,
@@ -1883,7 +1904,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 889947143}
-    characterCount: 5
+    characterCount: 8
     spriteCount: 0
     spaceCount: 1
     wordCount: 2
@@ -1917,7 +1938,7 @@ GameObject:
   - component: {fileID: 948859073}
   - component: {fileID: 948859076}
   - component: {fileID: 948859075}
-  - component: {fileID: 948859074}
+  - component: {fileID: 598885127}
   m_Layer: 5
   m_Name: Description
   m_TagString: Untagged
@@ -1985,7 +2006,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 0.8
---- !u!114 &948859074
+--- !u!114 &598885127
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1994,18 +2015,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 948859072}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8dd25db56f678e44eaec9ca155db47cd, type: 3}
+  m_Script: {fileID: 11500000, guid: 90e1edd277e9acc488abf2395f45528b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   descriptionText: {fileID: 961152270}
   nameText: {fileID: 1121720801}
-  attackSpeedText: {fileID: 889947143}
-  damageText: {fileID: 192424071}
-  priceText: {fileID: 0}
   useButton: {fileID: 1039231869}
   state: {fileID: 0}
-  currentItem: {fileID: 11400000, guid: b5f67d9ba3538cf4ea51b9ba1344d77e, type: 2}
-  currentShopItem: {fileID: 11400000, guid: 3a4179defacc02e4bb709d85a11082be, type: 2}
+  experienceText: {fileID: 889947143}
+  coinText: {fileID: 192424071}
 --- !u!1 &953771837
 GameObject:
   m_ObjectHideFlags: 0
@@ -2452,13 +2470,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 982187269}
-    characterCount: 11
+    characterCount: 0
     spriteCount: 0
-    spaceCount: 1
-    wordCount: 2
+    spaceCount: 0
+    wordCount: 0
     linkCount: 0
-    lineCount: 1
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -3217,7 +3235,7 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 220, y: 220}
+  m_CellSize: {x: 444, y: 110}
   m_Spacing: {x: 30, y: 30}
   m_Constraint: 1
   m_ConstraintCount: 1
@@ -3380,7 +3398,7 @@ GameObject:
   - component: {fileID: 1197573534}
   - component: {fileID: 1197573533}
   m_Layer: 5
-  m_Name: Journal Holder
+  m_Name: Quest Holder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3844,7 +3862,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -0.00024414062}
-  m_SizeDelta: {x: 0, y: -497}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1624607666
 MonoBehaviour:
@@ -4538,7 +4556,7 @@ GameObject:
   - component: {fileID: 2132620568}
   - component: {fileID: 2132620570}
   - component: {fileID: 2132620569}
-  - component: {fileID: 733790713}
+  - component: {fileID: 352596587}
   m_Layer: 5
   m_Name: Description
   m_TagString: Untagged
@@ -4606,7 +4624,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 0.8
---- !u!114 &733790713
+--- !u!114 &352596587
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4615,18 +4633,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 2132620567}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8dd25db56f678e44eaec9ca155db47cd, type: 3}
+  m_Script: {fileID: 11500000, guid: ddba279b82c60d546af1378e7c4469d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   descriptionText: {fileID: 304123477}
   nameText: {fileID: 633802818}
+  useButton: {fileID: 1677872658}
+  state: {fileID: 0}
   attackSpeedText: {fileID: 3253268781368567318}
   damageText: {fileID: 8097610445868813366}
   priceText: {fileID: 0}
-  useButton: {fileID: 1677872658}
-  state: {fileID: 0}
   currentItem: {fileID: 11400000, guid: b5f67d9ba3538cf4ea51b9ba1344d77e, type: 2}
-  currentShopItem: {fileID: 11400000, guid: 3a4179defacc02e4bb709d85a11082be, type: 2}
 --- !u!1 &300157508356957327
 GameObject:
   m_ObjectHideFlags: 0
@@ -5423,13 +5440,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 8449875598392490801}
-    characterCount: 8
+    characterCount: 0
     spriteCount: 0
-    spaceCount: 1
-    wordCount: 1
+    spaceCount: 0
+    wordCount: 0
     linkCount: 0
-    lineCount: 1
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -6000,7 +6017,7 @@ GameObject:
   - component: {fileID: 7849318317064361167}
   - component: {fileID: 8979355073377586681}
   - component: {fileID: 5458119809960699480}
-  - component: {fileID: 7650790828524024576}
+  - component: {fileID: 1132396195}
   m_Layer: 5
   m_Name: Description
   m_TagString: Untagged
@@ -6068,7 +6085,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 0.8
---- !u!114 &7650790828524024576
+--- !u!114 &1132396195
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6077,16 +6094,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1890660071100907910}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8dd25db56f678e44eaec9ca155db47cd, type: 3}
+  m_Script: {fileID: 11500000, guid: 68c0f1df51c53ef409df2c41210fedd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   descriptionText: {fileID: 5562403459631545487}
   nameText: {fileID: 406048926596863992}
+  useButton: {fileID: 7063657781583591664}
+  state: {fileID: 0}
   attackSpeedText: {fileID: 8030004881277542818}
   damageText: {fileID: 1743053416025383832}
   priceText: {fileID: 982187269}
-  useButton: {fileID: 7063657781583591664}
-  state: {fileID: 0}
   currentItem: {fileID: 11400000, guid: b5f67d9ba3538cf4ea51b9ba1344d77e, type: 2}
   currentShopItem: {fileID: 11400000, guid: 3a4179defacc02e4bb709d85a11082be, type: 2}
 --- !u!1 &1994699607571591413
@@ -6222,13 +6239,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 3643351373841813104}
-    characterCount: 7
+    characterCount: 0
     spriteCount: 0
     spaceCount: 0
-    wordCount: 1
+    wordCount: 0
     linkCount: 0
-    lineCount: 1
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -6681,13 +6698,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 406048926596863992}
-    characterCount: 22
+    characterCount: 0
     spriteCount: 0
-    spaceCount: 3
-    wordCount: 4
+    spaceCount: 0
+    wordCount: 0
     linkCount: 0
-    lineCount: 2
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -6837,13 +6854,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 3875476753149580105}
-    characterCount: 12
+    characterCount: 0
     spriteCount: 0
-    spaceCount: 2
-    wordCount: 3
+    spaceCount: 0
+    wordCount: 0
     linkCount: 0
-    lineCount: 1
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -7054,13 +7071,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 6560385085825255026}
-    characterCount: 5
+    characterCount: 0
     spriteCount: 0
     spaceCount: 0
-    wordCount: 1
+    wordCount: 0
     linkCount: 0
-    lineCount: 1
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -7210,13 +7227,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 2735281544267727689}
-    characterCount: 4
+    characterCount: 0
     spriteCount: 0
     spaceCount: 0
-    wordCount: 1
+    wordCount: 0
     linkCount: 0
-    lineCount: 1
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -7282,15 +7299,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e24caa9bac13c444a8d0a477bf13ce2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerInventory: {fileID: 11400000, guid: 1b0c51fb9a4c0f44f91bbae74e42dd4a, type: 2}
-  blankInventorySlot: {fileID: 3554246525453051975, guid: 02c36726b0673234f921ef01e776da7d,
+  blankSlot: {fileID: 3554246525453051975, guid: 02c36726b0673234f921ef01e776da7d,
     type: 3}
-  inventoryPanel: {fileID: 1624607663}
-  inventoryHolder: {fileID: 802014549}
+  slotsPanel: {fileID: 1624607663}
+  panelHolder: {fileID: 802014549}
   playerState: {fileID: 0}
-  pocketInventory: {fileID: 277486961}
-  description: {fileID: 733790713}
   currentItem: {fileID: 11400000, guid: b5f67d9ba3538cf4ea51b9ba1344d77e, type: 2}
+  playerInventory: {fileID: 11400000, guid: 1b0c51fb9a4c0f44f91bbae74e42dd4a, type: 2}
+  pocketInventory: {fileID: 277486961}
+  description: {fileID: 352596587}
 --- !u!1 &3970009548113415312
 GameObject:
   m_ObjectHideFlags: 0
@@ -7429,15 +7446,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bef62153fc71d8b46a74284047b94f45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerInventory: {fileID: 11400000, guid: 1b0c51fb9a4c0f44f91bbae74e42dd4a, type: 2}
-  blankInventorySlot: {fileID: 3554246525453051975, guid: 02c36726b0673234f921ef01e776da7d,
+  blankSlot: {fileID: 3554246525453051975, guid: 02c36726b0673234f921ef01e776da7d,
     type: 3}
-  inventoryPanel: {fileID: 8196043873005646618}
-  inventoryHolder: {fileID: 8529460301886334052}
+  slotsPanel: {fileID: 8196043873005646618}
+  panelHolder: {fileID: 8529460301886334052}
   playerState: {fileID: 0}
-  pocketInventory: {fileID: 277486961}
-  description: {fileID: 7650790828524024576}
   currentItem: {fileID: 11400000, guid: b5f67d9ba3538cf4ea51b9ba1344d77e, type: 2}
+  playerInventory: {fileID: 11400000, guid: 1b0c51fb9a4c0f44f91bbae74e42dd4a, type: 2}
+  pocketInventory: {fileID: 277486961}
+  description: {fileID: 1132396195}
   blankShopSlot: {fileID: 7665408120419458949, guid: a0d7b9df14847b545b52e60149be4c77,
     type: 3}
   shopInventory: {fileID: 11400000, guid: 0b14714236a4c2f45b520c6966f80a6d, type: 2}
@@ -7960,7 +7977,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: -497}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &72534596320600569
 MonoBehaviour:
@@ -8012,7 +8029,7 @@ GameObject:
   - component: {fileID: 5958067677601247220}
   - component: {fileID: 1743053416025383832}
   m_Layer: 5
-  m_Name: Damage Speed
+  m_Name: Damage Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8134,13 +8151,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1743053416025383832}
-    characterCount: 6
+    characterCount: 0
     spriteCount: 0
-    spaceCount: 1
-    wordCount: 2
+    spaceCount: 0
+    wordCount: 0
     linkCount: 0
-    lineCount: 1
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -8576,13 +8593,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 4462488813332276201}
-    characterCount: 3
+    characterCount: 0
     spriteCount: 0
     spaceCount: 0
-    wordCount: 1
+    wordCount: 0
     linkCount: 0
-    lineCount: 1
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -9722,13 +9739,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 5405928529879569036}
-    characterCount: 9
+    characterCount: 0
     spriteCount: 0
     spaceCount: 0
-    wordCount: 1
+    wordCount: 0
     linkCount: 0
-    lineCount: 1
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -9879,13 +9896,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 8030004881277542818}
-    characterCount: 5
+    characterCount: 0
     spriteCount: 0
-    spaceCount: 1
-    wordCount: 2
+    spaceCount: 0
+    wordCount: 0
     linkCount: 0
-    lineCount: 1
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -10107,13 +10124,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 3523754885140560037}
-    characterCount: 4
+    characterCount: 0
     spriteCount: 0
     spaceCount: 0
-    wordCount: 1
+    wordCount: 0
     linkCount: 0
-    lineCount: 1
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -10263,13 +10280,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 2996319342108302561}
-    characterCount: 9
+    characterCount: 0
     spriteCount: 0
     spaceCount: 0
-    wordCount: 1
+    wordCount: 0
     linkCount: 0
-    lineCount: 1
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -10476,7 +10493,7 @@ GameObject:
   - component: {fileID: 8617895347840858574}
   - component: {fileID: 8097610445868813366}
   m_Layer: 5
-  m_Name: Damage Speed
+  m_Name: Damage Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10858,7 +10875,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -0.00024414062}
-  m_SizeDelta: {x: 0, y: -497}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &5648778006920137502
 MonoBehaviour:
@@ -11032,13 +11049,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 5562403459631545487}
-    characterCount: 90
+    characterCount: 0
     spriteCount: 0
-    spaceCount: 20
-    wordCount: 20
+    spaceCount: 0
+    wordCount: 0
     linkCount: 0
-    lineCount: 5
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -11426,13 +11443,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 687445175976199283}
-    characterCount: 8
+    characterCount: 0
     spriteCount: 0
     spaceCount: 0
-    wordCount: 1
+    wordCount: 0
     linkCount: 0
-    lineCount: 1
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -11568,6 +11585,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a2ae2c1cd8bfa940b8db0600ca1a0cc, type: 3}
+--- !u!224 &7525607831423970029 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7033264169998821112, guid: 0a2ae2c1cd8bfa940b8db0600ca1a0cc,
+    type: 3}
+  m_PrefabInstance: {fileID: 714796962941979669}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1363105608285011085 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1946049101250752664, guid: 0a2ae2c1cd8bfa940b8db0600ca1a0cc,
@@ -11580,12 +11603,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d49eb58bbcc19174591c0f8a86957fd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!224 &7525607831423970029 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 7033264169998821112, guid: 0a2ae2c1cd8bfa940b8db0600ca1a0cc,
-    type: 3}
-  m_PrefabInstance: {fileID: 714796962941979669}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4552596110855257619
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11705,6 +11722,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a2ae2c1cd8bfa940b8db0600ca1a0cc, type: 3}
+--- !u!224 &6824429484613638379 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7033264169998821112, guid: 0a2ae2c1cd8bfa940b8db0600ca1a0cc,
+    type: 3}
+  m_PrefabInstance: {fileID: 4552596110855257619}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2607535058862395019 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1946049101250752664, guid: 0a2ae2c1cd8bfa940b8db0600ca1a0cc,
@@ -11717,12 +11740,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d49eb58bbcc19174591c0f8a86957fd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!224 &6824429484613638379 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 7033264169998821112, guid: 0a2ae2c1cd8bfa940b8db0600ca1a0cc,
-    type: 3}
-  m_PrefabInstance: {fileID: 4552596110855257619}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6107010350743006255
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11979,6 +11996,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a2ae2c1cd8bfa940b8db0600ca1a0cc, type: 3}
+--- !u!224 &4026694070070403768 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7033264169998821112, guid: 0a2ae2c1cd8bfa940b8db0600ca1a0cc,
+    type: 3}
+  m_PrefabInstance: {fileID: 6231465192043365440}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &5583159290630255832 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1946049101250752664, guid: 0a2ae2c1cd8bfa940b8db0600ca1a0cc,
@@ -11991,12 +12014,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d49eb58bbcc19174591c0f8a86957fd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!224 &4026694070070403768 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 7033264169998821112, guid: 0a2ae2c1cd8bfa940b8db0600ca1a0cc,
-    type: 3}
-  m_PrefabInstance: {fileID: 6231465192043365440}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6963798383192744355
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12253,6 +12270,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a2ae2c1cd8bfa940b8db0600ca1a0cc, type: 3}
+--- !u!224 &2123879307 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7033264169998821112, guid: 0a2ae2c1cd8bfa940b8db0600ca1a0cc,
+    type: 3}
+  m_PrefabInstance: {fileID: 7033264170511693171}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &8834634371291940331 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1946049101250752664, guid: 0a2ae2c1cd8bfa940b8db0600ca1a0cc,
@@ -12265,9 +12288,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d49eb58bbcc19174591c0f8a86957fd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!224 &2123879307 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 7033264169998821112, guid: 0a2ae2c1cd8bfa940b8db0600ca1a0cc,
-    type: 3}
-  m_PrefabInstance: {fileID: 7033264170511693171}
-  m_PrefabAsset: {fileID: 0}

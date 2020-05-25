@@ -18,8 +18,8 @@ public class PauseManager : MonoBehaviour
     
     void Update()
     {
-        if (Input.GetButtonDown("Pause") && playerState.myState != GenericState.inventory && (playerState.myState == GenericState.idle 
-            || playerState.myState == GenericState.walk || playerState.myState == GenericState.pause))
+        if (Input.GetButtonDown("Pause") && playerState.myState != GenericState.inventory && playerState.myState != GenericState.journal 
+            && (playerState.myState == GenericState.idle || playerState.myState == GenericState.walk || playerState.myState == GenericState.pause))
         {
             ChangePause();
         }

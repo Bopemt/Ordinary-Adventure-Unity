@@ -14,7 +14,8 @@ public enum GenericState
     inventory,
     ability,
     pause,
-    shop
+    shop,
+    journal
 }
 
 public class GenericStateMachine : MonoBehaviour

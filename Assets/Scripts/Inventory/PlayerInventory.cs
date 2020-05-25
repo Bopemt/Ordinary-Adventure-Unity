@@ -29,10 +29,6 @@ public class PlayerInventory : ScriptableObject
             {
                 newItem.numberHeld--;
             }
-            else
-            {
-                RemoveItem(newItem);
-            }
         }
     }
 

@@ -5,8 +5,7 @@ public class GenericAbility : ScriptableObject
 {
     public FloatValue energyCost;
     public float duration;
-
-    //public FloatValue playerEnergy;
+    
     public SignalCore energySignal;
 
     public virtual void Ability(Vector2 playerPosition, Vector2 playerFaceDirection, GenericEnergy playerEnergy, 

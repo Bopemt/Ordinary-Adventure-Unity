@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class ShopManager : InventoryManager
 {
+    [Header("Description & Use Stuff")]
+
     [Header("Shop stuff")]
     [SerializeField] private GameObject blankShopSlot;
     [SerializeField] private ShopInventory shopInventory;
@@ -21,54 +23,44 @@ public class ShopManager : InventoryManager
     {
         if (Input.GetButtonUp("Pause") && playerState.myState == GenericState.shop)
         {
-            inventoryHolder.gameObject.SetActive(false);
+            panelHolder.gameObject.SetActive(false);
             playerState.myState = GenericState.idle;
-            ClearInventorySlots();
+            ClearSlots(slotsPanel);
+            ClearSlots(shopPanel);
             Time.timeScale = 1;
         }
     }
 
     public void ShopOpen()
     {
-        if (inventoryHolder.gameObject.activeInHierarchy)
+        if (panelHolder.gameObject.activeInHierarchy)
         {
-            inventoryHolder.gameObject.SetActive(false);
+            panelHolder.gameObject.SetActive(false);
             playerState.myState = GenericState.idle;
-            ClearInventorySlots();
+            ClearSlots(slotsPanel);
+            ClearSlots(shopPanel);
             Time.timeScale = 1;
         }
         else
         {
-            inventoryHolder.gameObject.SetActive(true);
+            panelHolder.gameObject.SetActive(true);
             playerState.myState = GenericState.shop;
-            MakeInventorySlots();
+            MakeSlots(playerInventory.myInventory, blankSlot, slotsPanel);
+            MakeSlots(shopInventory.list, blankShopSlot, shopPanel);
             Time.timeScale = 0.000001f;
         }
     }
 
-    protected override void MakeInventorySlots()
+    protected void MakeSlots(List<ShopItem> list, GameObject _blankSlot, GameObject slotPanel)
     {
-        base.MakeInventorySlots();
-        if (shopInventory)
+        foreach (ShopItem item in list)
         {
-            foreach (ShopItem item in shopInventory.list)
+            ShopSlot newSlot = Instantiate(_blankSlot, transform.position, transform.rotation, slotPanel.transform)
+             .GetComponent<ShopSlot>();
+            if (newSlot)
             {
-                ShopSlot newSlot = Instantiate(blankShopSlot, transform.position, transform.rotation, shopPanel.transform)
-                 .GetComponent<ShopSlot>();
-                if (newSlot)
-                {
-                    newSlot.Setup(item, this);
-                }
+                newSlot.Setup(item, this);
             }
-        }
-    }
-
-    protected override void ClearInventorySlots()
-    {
-        base.ClearInventorySlots();
-        for (int i = 0; i < shopPanel.transform.childCount; i++)
-        {
-            Destroy(shopPanel.transform.GetChild(i).gameObject);
         }
     }
 
@@ -89,8 +81,10 @@ public class ShopManager : InventoryManager
                 }
                 moneySignal.Raise();
             }
-            ClearInventorySlots();
-            MakeInventorySlots();
+            ClearSlots(slotsPanel);
+            ClearSlots(shopPanel);
+            MakeSlots(playerInventory.myInventory, blankSlot, slotsPanel);
+            MakeSlots(shopInventory.list, blankShopSlot, shopPanel);
         }
         else if(button.GetComponentInChildren<TextMeshProUGUI>().text == "Sell")
         {
@@ -100,11 +94,14 @@ public class ShopManager : InventoryManager
                 playerMoney.value += Mathf.RoundToInt(currentItem.value.price * 0.75f);
                 if (currentItem.value.numberHeld <= 0)
                 {
+                    playerInventory.RemoveItem(currentItem.value);
                     description.ClearDescriptionAndButton();
                 }
                 moneySignal.Raise();
-                ClearInventorySlots();
-                MakeInventorySlots();
+                ClearSlots(slotsPanel);
+                ClearSlots(shopPanel);
+                MakeSlots(playerInventory.myInventory, blankSlot, slotsPanel);
+                MakeSlots(shopInventory.list, blankShopSlot, shopPanel);
             }
         }
         pockedSignal.Raise();
