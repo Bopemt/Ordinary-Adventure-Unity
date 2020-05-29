@@ -43,7 +43,7 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: 09ab93e6a5cad8946b12c97014e15645, type: 3}
-    totalSpriteSurfaceArea: 1428273
+    totalSpriteSurfaceArea: 1432369
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
@@ -1472,6 +1472,7 @@ SpriteAtlas:
   - {fileID: 745320492634918702, guid: 5f0d3a0cba2d041448cf56e46ed25aee, type: 3}
   - {fileID: -5365891780874390906, guid: 5f0d3a0cba2d041448cf56e46ed25aee, type: 3}
   - {fileID: 21300000, guid: caa51e3d210f0c94ebe0f18b971c086f, type: 3}
+  - {fileID: 21300000, guid: 11061e3d3444f3c4b8dae23a8c0f9d0b, type: 3}
   - {fileID: -7883779674286137895, guid: 2a760eae50cd1c0408a5f5edd67cfc66, type: 3}
   - {fileID: 21300000, guid: ba907afe736597f4f937f471a8cc7466, type: 3}
   - {fileID: -1492427166213296397, guid: 314e77ef66105ba40b7acfdd13e7828f, type: 3}
@@ -2904,6 +2905,7 @@ SpriteAtlas:
   - Statues_1
   - Statues_0
   - key
+  - QuestBoard
   - font_51
   - HeartBar - Border
   - Bow1_3

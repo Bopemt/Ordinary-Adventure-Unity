@@ -16,7 +16,7 @@ MonoBehaviour:
   myDescription: This key is required to open the dungeon.
   mySprite: {fileID: 21300000, guid: caa51e3d210f0c94ebe0f18b971c086f, type: 3}
   price: -1
-  numberHeld: 1
+  numberHeld: 0
   usable: 0
   unique: 1
   pocket: 0

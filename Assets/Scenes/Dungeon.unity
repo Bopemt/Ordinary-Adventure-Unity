@@ -1221,6 +1221,13 @@ MonoBehaviour:
   storedValue: {fileID: 11400000, guid: dde2d83f49aa6724db9a266086182c88, type: 2}
   activeSprite: {fileID: 2727136117312835427, guid: a9677ed4b207471489d56bfe6d0cbd30,
     type: 3}
+  myState: {fileID: 2069950439}
+  notification: 1
+  text: Something activated... But what?
+  speakerName: 
+  stringText: {fileID: 11400000, guid: 80381a45a8f50fd479254c384e073d56, type: 2}
+  stringName: {fileID: 11400000, guid: 38a3c48f396c2e34fad7b6abe54320be, type: 2}
+  dialogSignal: {fileID: 11400000, guid: e0e9a2a802f9e094f9c79cbc3339e843, type: 2}
 --- !u!61 &412840868
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1626,12 +1633,12 @@ PrefabInstance:
     - target: {fileID: 4794786636751675913, guid: 6a4748808c8038e4a8d3354733c01c11,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.59
+      value: 9.53
       objectReference: {fileID: 0}
     - target: {fileID: 4794786636751675913, guid: 6a4748808c8038e4a8d3354733c01c11,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -9.78
+      value: -8.38
       objectReference: {fileID: 0}
     - target: {fileID: 4794786636751675913, guid: 6a4748808c8038e4a8d3354733c01c11,
         type: 3}
@@ -2170,10 +2177,22 @@ PrefabInstance:
       propertyPath: levelSystem
       value: 
       objectReference: {fileID: 1929705240}
+    - target: {fileID: 246320791, guid: 135b1da8e43463d42918e184e75e86ef, type: 3}
+      propertyPath: playerState
+      value: 
+      objectReference: {fileID: 2069950439}
     - target: {fileID: 277486961, guid: 135b1da8e43463d42918e184e75e86ef, type: 3}
       propertyPath: playerState
       value: 
       objectReference: {fileID: 2069950439}
+    - target: {fileID: 352596587, guid: 135b1da8e43463d42918e184e75e86ef, type: 3}
+      propertyPath: state
+      value: 
+      objectReference: {fileID: 2069950439}
+    - target: {fileID: 425394043, guid: 135b1da8e43463d42918e184e75e86ef, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 595947247, guid: 135b1da8e43463d42918e184e75e86ef, type: 3}
       propertyPath: m_AnchorMin.x
       value: 0
@@ -2186,6 +2205,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1060133749, guid: 135b1da8e43463d42918e184e75e86ef, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1160244652, guid: 135b1da8e43463d42918e184e75e86ef, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -499
+      objectReference: {fileID: 0}
     - target: {fileID: 1181663835, guid: 135b1da8e43463d42918e184e75e86ef, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -2202,6 +2229,18 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1197573531, guid: 135b1da8e43463d42918e184e75e86ef, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1664276184, guid: 135b1da8e43463d42918e184e75e86ef, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1884293207, guid: 135b1da8e43463d42918e184e75e86ef, type: 3}
+      propertyPath: playerState
+      value: 
+      objectReference: {fileID: 2069950439}
     - target: {fileID: 2123879307, guid: 135b1da8e43463d42918e184e75e86ef, type: 3}
       propertyPath: m_AnchorMin.y
       value: 0
@@ -2321,6 +2360,11 @@ PrefabInstance:
       propertyPath: playerState
       value: 
       objectReference: {fileID: 2069950439}
+    - target: {fileID: 5300402364459780031, guid: 135b1da8e43463d42918e184e75e86ef,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6655016962068019831, guid: 135b1da8e43463d42918e184e75e86ef,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3474,6 +3518,13 @@ MonoBehaviour:
   storedValue: {fileID: 11400000, guid: f464a7f0373c7204b8c9f8eaa8290d5c, type: 2}
   activeSprite: {fileID: 2727136117312835427, guid: a9677ed4b207471489d56bfe6d0cbd30,
     type: 3}
+  myState: {fileID: 2069950439}
+  notification: 0
+  text: Something activated... But what?
+  speakerName: 
+  stringText: {fileID: 11400000, guid: 80381a45a8f50fd479254c384e073d56, type: 2}
+  stringName: {fileID: 11400000, guid: 38a3c48f396c2e34fad7b6abe54320be, type: 2}
+  dialogSignal: {fileID: 11400000, guid: e0e9a2a802f9e094f9c79cbc3339e843, type: 2}
 --- !u!1 &1591538154 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8216650442264197658, guid: 2d86aa57a4f28f84fb7224e91ead9cbb,

@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf3e38383c62c434bad86ef8e716d60a, type: 3}
+  m_Name: Quest Board List
+  m_EditorClassIdentifier: 
+  list:
+  - {fileID: 11400000, guid: 80ae8867f1ebe864d9a4751987f47a3b, type: 2}
+  - {fileID: 11400000, guid: 71379f20664372145a38e9be0e1c842b, type: 2}
+  - {fileID: 11400000, guid: 4a60f064af481c8449f1ea60876492c9, type: 2}

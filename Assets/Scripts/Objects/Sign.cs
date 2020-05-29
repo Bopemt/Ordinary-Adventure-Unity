@@ -19,7 +19,7 @@ public class Sign : Interactable
 
     protected virtual void Update()
     {
-        if (Input.GetButtonDown("Interact") && playerInRange && myState.myState != GenericState.inventory)
+        if (Input.GetButtonDown("Interact") && playerInRange && (myState.myState == GenericState.idle || myState.myState == GenericState.walk || myState.myState == GenericState.interact))
         {
             if (!check)
             {

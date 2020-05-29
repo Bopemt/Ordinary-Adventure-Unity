@@ -11,7 +11,7 @@ public class InventorySaver : MonoBehaviour
     //void Update()
     //{
     //    if (Input.GetKey(KeyCode.F4)) { SceneManager.LoadScene(SceneManager.GetActiveScene().name); }
-    //    if (Input.GetKey(KeyCode.F5)) { SaveScriptables(); }
+    //    if (Input.GetKey(KeyCode.F5)) { SaveGame(); }
     //    if (Input.GetKey(KeyCode.F6)) { ResetScriptables(); SceneManager.LoadScene("SampleScene"); }
     //}
 

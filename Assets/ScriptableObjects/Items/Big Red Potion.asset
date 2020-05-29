@@ -17,7 +17,7 @@ MonoBehaviour:
   mySprite: {fileID: 5868065780882382813, guid: 7fe996d1040ea4845a2bed211fd5d72f,
     type: 3}
   price: 70
-  numberHeld: 18
+  numberHeld: 5
   usable: 1
   unique: 0
   pocket: 1

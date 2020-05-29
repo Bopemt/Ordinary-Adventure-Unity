@@ -26,12 +26,8 @@ public class LevelSystem : MonoBehaviour
             {
                 playerLevel.value++;
                 playerExp.value -= expToNextLvl;
-                expToNextLvl += expIncrease /*+ 10 * (playerLevel.value - 1)*/;
-                //expToNextLvl += expIncrease;
-                //expToNextLvl = expIncrease;
+                expToNextLvl += expIncrease;
                 levelSignal.Raise();
-                //weaponSignal.Raise();
-                //healthSignal.Raise();
                 playerHealth.FullHeal();
                 GameObject effect = Instantiate(levelUpEffect, transform.parent);
                 Destroy(effect, 1f);

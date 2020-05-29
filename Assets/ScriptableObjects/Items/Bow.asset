@@ -16,7 +16,7 @@ MonoBehaviour:
   myDescription: Sharpy bow
   mySprite: {fileID: 21300000, guid: ffcffab32fc023146b8021cf1dfb1b10, type: 3}
   price: 50
-  numberHeld: 1
+  numberHeld: 0
   usable: 0
   unique: 0
   pocket: 1

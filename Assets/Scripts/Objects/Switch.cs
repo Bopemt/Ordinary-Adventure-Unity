@@ -5,11 +5,21 @@ using UnityEngine;
 public class Switch : MonoBehaviour
 {
     public bool isActive;
-    public BoolValue storedValue;
-    public Sprite activeSprite;
+    [SerializeField] private BoolValue storedValue;
+    [SerializeField] private Sprite activeSprite;
     private SpriteRenderer mySprite;
+    [SerializeField] private GenericStateMachine myState;
 
-    // Start is called before the first frame update
+    [Header("Notification Text Stuff")]
+    [SerializeField] private bool notification;
+    [SerializeField] private string text;
+    [SerializeField] private string speakerName;
+    [SerializeField] private StringValue stringText;
+    [SerializeField] private StringValue stringName;
+
+    [Header("Dialog Stuff")]
+    [SerializeField] private SignalCore dialogSignal;
+
     void Start()
     {
         mySprite = GetComponent<SpriteRenderer>();
@@ -20,18 +30,46 @@ public class Switch : MonoBehaviour
         }
     }
 
-    public void OnTriggerEnter2D(Collider2D other)
+    private void Update()
     {
-        if(other.CompareTag("Player") && !other.isTrigger)
+        if(Input.GetButtonDown("Interact") && myState.myState == GenericState.interact)
         {
-            ActivateSwitch();
+            DisableContents();
         }
     }
 
-    public void ActivateSwitch()
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.CompareTag("Player") && !other.isTrigger && !isActive)
+        {
+            ActivateSwitch();
+            if (notification)
+            {
+                DisplayContents();
+            }
+        }
+    }
+
+    void ActivateSwitch()
     {
         isActive = true;
         storedValue.value = isActive;
         mySprite.sprite = activeSprite;
+    }
+
+    void DisplayContents()
+    {
+        stringName.value = speakerName;
+        stringText.value = text;
+        dialogSignal.Raise();
+        myState.ChangeState(GenericState.interact);
+        Time.timeScale = 0.000001f;
+    }
+
+    void DisableContents()
+    {
+        myState.ChangeState(GenericState.idle);
+        dialogSignal.Raise();
+        Time.timeScale = 1;
     }
 }

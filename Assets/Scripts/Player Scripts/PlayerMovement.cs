@@ -57,8 +57,7 @@ public class PlayerMovement : Movement
 
     public bool IsRestrictedState(GenericState currentState)
     {
-        if (currentState == GenericState.attack || currentState == GenericState.ability || currentState == GenericState.pause 
-            || myState.myState == GenericState.interact || myState.myState == GenericState.inventory || myState.myState == GenericState.shop)
+        if (currentState != GenericState.idle && currentState != GenericState.walk && currentState != GenericState.recieveItem)
         {
             return true;
         }
@@ -120,8 +119,7 @@ public class PlayerMovement : Movement
         else
         {
             anim.SetAnimParameter("moving", false);
-            if (myState.myState != GenericState.attack && myState.myState != GenericState.interact && myState.myState != GenericState.inventory 
-                && myState.myState != GenericState.ability && myState.myState != GenericState.shop)
+            if (myState.myState == GenericState.idle || myState.myState == GenericState.walk || myState.myState == GenericState.pause)
             {
                 SetState(GenericState.idle);
             }

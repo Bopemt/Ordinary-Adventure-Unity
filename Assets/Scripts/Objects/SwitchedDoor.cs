@@ -6,14 +6,18 @@ public class SwitchedDoor : Door
 {
     public Switch doorSwitch;
 
-    // Update is called once per frame
+    private void Start()
+    {
+        checkSwitch();
+    }
+
     protected override void Update()
     {
         base.Update();
         checkSwitch();
     }
 
-    private void checkSwitch()
+    public void checkSwitch()
     {
         if (doorSwitch.isActive && !isOpened)
         {

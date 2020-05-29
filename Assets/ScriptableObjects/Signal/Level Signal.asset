@@ -12,7 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f25b71579d4a0f45b38b9ffda8566db, type: 3}
   m_Name: Level Signal
   m_EditorClassIdentifier: 
-  listeners:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  listeners: []

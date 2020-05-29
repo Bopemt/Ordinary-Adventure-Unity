@@ -23,11 +23,7 @@ public class ShopManager : InventoryManager
     {
         if (Input.GetButtonUp("Pause") && playerState.myState == GenericState.shop)
         {
-            panelHolder.gameObject.SetActive(false);
-            playerState.myState = GenericState.idle;
-            ClearSlots(slotsPanel);
-            ClearSlots(shopPanel);
-            Time.timeScale = 1;
+            ShopOpen();
         }
     }
 

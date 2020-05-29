@@ -10,7 +10,7 @@ public class Coin : PowerUp
     {
         if (other.CompareTag("Player") && !other.isTrigger)
         {
-            coinCount.value += 1;
+            coinCount.value += 10;
             powerUpSignal.Raise();
             Destroy(this.gameObject);
         }
