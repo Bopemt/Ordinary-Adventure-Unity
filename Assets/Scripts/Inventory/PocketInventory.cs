@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PocketInventory : MonoBehaviour
 {
-    public PlayerInventory pocketInventory;
+    public PlayerPocketInventory pocketInventory;
     [SerializeField] private PocketSlot[] pocketSlots;
     [SerializeField] private GenericStateMachine playerState;
     [SerializeField] private PlayerInventory playerInventory;
@@ -53,7 +53,7 @@ public class PocketInventory : MonoBehaviour
                 }
             }
         }
-        else if (playerState.myState != GenericState.inventory && playerState.myState != GenericState.recieveItem && playerState.myState != GenericState.interact)
+        else if (playerState.myState == GenericState.walk || playerState.myState == GenericState.idle)
         {
             for (int i = 0; i < keyCodes.Length; i++)
             {

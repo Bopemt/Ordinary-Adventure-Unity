@@ -26,10 +26,10 @@ public class LockedDoor : Door
     protected override void Update()
     {
         base.Update();
-        checkKey();
+        CheckKey();
     }
 
-    private void checkKey()
+    private void CheckKey()
     {
         if (playerInRange)
         {

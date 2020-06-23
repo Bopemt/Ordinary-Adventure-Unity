@@ -24,6 +24,10 @@ public class LevelBar : MonoBehaviour
         slider.value = playerExp.value;
         levelText.text = playerLevel.value.ToString();
         expText.text = playerExp.value + "/" + slider.maxValue;
+    }
+
+    public void UpdateValueLate()
+    {
         Invoke("UpdateValue", 0.001f);
     }
 }

@@ -16,11 +16,11 @@ MonoBehaviour:
   myName: Go and kill 1
   myDescription: Kill 3 monsters
   myLevel: 1
-  currentAmount: 3
+  currentAmount: 0
   requiredAmount: 3
-  inJournal: 1
-  isActive: 1
-  isComplete: 1
+  inJournal: 0
+  isActive: 0
+  isComplete: 0
   myItem: {fileID: 0}
   myMoney: 25
   myExperience: 30

@@ -54,9 +54,9 @@ public class TreasureChest : Interactable
     {
         if (other.gameObject.CompareTag(otherTag) && !other.isTrigger)
         {
-            playerInRange = true;
             if (!isOpen)
             {
+                playerInRange = true;
                 context.Raise();
             }
         }
@@ -66,9 +66,9 @@ public class TreasureChest : Interactable
     {
         if (other.gameObject.CompareTag(otherTag) && !other.isTrigger)
         {
-            playerInRange = false;
             if (!isOpen)
             {
+                playerInRange = false;
                 context.Raise();
             }
         }

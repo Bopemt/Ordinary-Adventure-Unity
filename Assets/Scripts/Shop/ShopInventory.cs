@@ -7,6 +7,7 @@ using UnityEngine;
 public class ShopInventory : ScriptableObject
 {
     public List<ShopItem> list = new List<ShopItem>();
+    public List<ShopItem> shopDefaultList = new List<ShopItem>();
 
     public void CleanOutOfNull()
     {
@@ -33,5 +34,10 @@ public class ShopInventory : ScriptableObject
                 list.Remove(newItem);
             }
         }
+    }
+
+    public void ResetShopInventory()
+    {
+        list = shopDefaultList;
     }
 }

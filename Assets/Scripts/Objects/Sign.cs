@@ -21,17 +21,15 @@ public class Sign : Interactable
     {
         if (Input.GetButtonDown("Interact") && playerInRange && (myState.myState == GenericState.idle || myState.myState == GenericState.walk || myState.myState == GenericState.interact))
         {
-            if (!check)
+            if (check == false)
             {
                 check = !check;
                 DisplayContents();
-                Time.timeScale = 0.000001f;
             }
             else
             {
-                DisableContents();
                 check = !check;
-                Time.timeScale = 1;
+                DisableContents();
             }
         }
     }
@@ -43,6 +41,7 @@ public class Sign : Interactable
         dialogSignal.Raise();
         myState.ChangeState(GenericState.interact);
         context.Raise();
+        Time.timeScale = 0.000001f;
     }
 
     protected void DisableContents()
@@ -50,5 +49,6 @@ public class Sign : Interactable
         myState.ChangeState(GenericState.idle);
         dialogSignal.Raise();
         context.Raise();
+        Time.timeScale = 1;
     }
 }

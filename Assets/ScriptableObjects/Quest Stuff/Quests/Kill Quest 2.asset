@@ -26,7 +26,7 @@ MonoBehaviour:
   myExperience: 50
   playerMoney: {fileID: 11400000, guid: 293961a88fe5ef0469f739d036287e1f, type: 2}
   playerExperience: {fileID: 11400000, guid: c872d5399c4edab4dbf3e48e4f8b5662, type: 2}
-  playerInventory: {fileID: 11400000, guid: aa2333205b0fd36499793afed16c9eff, type: 2}
+  playerInventory: {fileID: 11400000, guid: 1b0c51fb9a4c0f44f91bbae74e42dd4a, type: 2}
   coinSignal: {fileID: 11400000, guid: 801ad1a1a4279d24ba70a95978b37b59, type: 2}
   expSignal: {fileID: 11400000, guid: 917597dec12d9f74abc7af4bf67d93e1, type: 2}
   questCompleteSignal: {fileID: 11400000, guid: 31b5110b41ece0149884ee53307be89b,

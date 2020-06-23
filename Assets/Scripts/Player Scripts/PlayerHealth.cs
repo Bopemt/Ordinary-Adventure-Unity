@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class PlayerHealth : GenericHealth
 {
-    public SignalCore healthSignal;
+    [SerializeField] private SignalCore healthSignal;
+    [SerializeField] private SignalCore playerDeathSignal;
     public GenericFlashColor flash;
 
     public override void Start()
     {
         currentHealth = health.value;
+        healthSignal.Raise();
     }
 
     public override void Damage(float amountToDamage)
@@ -18,6 +20,7 @@ public class PlayerHealth : GenericHealth
         if(health.value <= 0)
         {
             health.value = 0;
+            playerDeathSignal.Raise();
             transform.parent.gameObject.SetActive(false);
         }
         else

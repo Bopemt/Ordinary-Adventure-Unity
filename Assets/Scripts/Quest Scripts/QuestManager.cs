@@ -6,7 +6,7 @@ public class QuestManager : SlotManager
 {
     [SerializeField] private GameObject boardPanelHolder;
     [SerializeField] private QuestsList questList;
-    [SerializeField] private QuestsList questBoardList;
+    [SerializeField] private QuestBoardList questBoardList;
     [SerializeField] private QuestValue selectedQuest;
     [SerializeField] private QuestValue activeQuest;
     [SerializeField] private GameObject boardSlotsPanel;
@@ -38,7 +38,7 @@ public class QuestManager : SlotManager
     {
         panelHolder.gameObject.SetActive(true);
         playerState.myState = GenericState.journal;
-        MakeSlots(questList.list, blankSlot, slotsPanel);
+        MakeSlots(questList.questList, blankSlot, slotsPanel);
         Time.timeScale = 0.000001f;
     }
 
@@ -65,14 +65,14 @@ public class QuestManager : SlotManager
         else
         {
             boardPanelHolder.gameObject.SetActive(true);
-            MakeSlots(questBoardList.list, blankSlot, boardSlotsPanel);
+            MakeSlots(questBoardList.boardQuests, blankSlot, boardSlotsPanel);
             OpenJournal();
         }
     }
 
     protected void MakeSlots(List<Quest> list, GameObject _blankSlot, GameObject slotPanel)
     {
-        questList.list.RemoveAll(q => q.isComplete);
+        questList.questList.RemoveAll(q => q.isComplete);
         foreach (Quest item in list)
         {
             QuestSlot newSlot = Instantiate(_blankSlot, transform.position, transform.rotation, slotPanel.transform)
@@ -101,18 +101,18 @@ public class QuestManager : SlotManager
         activeQuest.value.isActive = true;
         description.SetupDescriptionAndButton(activeQuest.value);
         ClearSlots(slotsPanel);
-        MakeSlots(questList.list, blankSlot, slotsPanel);
+        MakeSlots(questList.questList, blankSlot, slotsPanel);
     }
 
     public void AddQuestButtonPressed()
     {
         selectedQuest.value.inJournal = true;
-        questBoardList.list.Remove(selectedQuest.value);
-        questList.list.Add(selectedQuest.value);
+        questBoardList.boardQuests.Remove(selectedQuest.value);
+        questList.questList.Add(selectedQuest.value);
         description.ClearDescriptionAndButton();
         ClearSlots(slotsPanel);
         ClearSlots(boardSlotsPanel);
-        MakeSlots(questList.list, blankSlot, slotsPanel);
-        MakeSlots(questBoardList.list, blankSlot, boardSlotsPanel);
+        MakeSlots(questList.questList, blankSlot, slotsPanel);
+        MakeSlots(questBoardList.boardQuests, blankSlot, boardSlotsPanel);
     }
 }

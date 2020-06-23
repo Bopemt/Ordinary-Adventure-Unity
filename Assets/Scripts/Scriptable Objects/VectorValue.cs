@@ -6,7 +6,7 @@ using UnityEngine;
 [System.Serializable]
 public class VectorValue : ScriptableObject
 {
-    [SerializeField] private Vector2 defaultValue;
+    public Vector2 defaultValue;
 
     public Vector2 value;
 

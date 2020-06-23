@@ -15,10 +15,10 @@ MonoBehaviour:
   myName: Soldier Sword
   myDescription: Old Sword
   mySprite: {fileID: 21300000, guid: d293ad70cc4b8584fb8260d1304d5c56, type: 3}
-  price: 30
-  numberHeld: 0
+  price: -1
+  numberHeld: 1
   usable: 0
-  unique: 0
+  unique: 1
   pocket: 1
   weapon: 1
   rangeWeapon: 0

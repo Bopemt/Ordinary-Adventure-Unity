@@ -7,7 +7,7 @@ public class PauseManager : MonoBehaviour
 {
     private bool isPaused;
     [SerializeField] private GameObject pausePanel;
-    public string mainMenu;
+    [SerializeField] private string mainMenu;
 
     [SerializeField] private GenericStateMachine playerState;
 

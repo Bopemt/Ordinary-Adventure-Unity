@@ -57,7 +57,8 @@ public class PlayerMovement : Movement
 
     public bool IsRestrictedState(GenericState currentState)
     {
-        if (currentState != GenericState.idle && currentState != GenericState.walk && currentState != GenericState.recieveItem)
+        if (currentState != GenericState.idle && currentState != GenericState.walk 
+            && currentState != GenericState.recieveItem)
         {
             return true;
         }
@@ -66,7 +67,7 @@ public class PlayerMovement : Movement
 
     void GetInput()
     {
-        if (Input.GetButtonDown("Attack") /*&& myState.myState != GenericState.interact && myState.myState != GenericState.inventory*/)
+        if (Input.GetButtonDown("Attack"))
         {
             if (currentWeapon.value)
             {
@@ -93,7 +94,7 @@ public class PlayerMovement : Movement
                 Motion(tempMovement);
             }
         }
-        else if (tempMovement.magnitude >= 0/*myState.myState != GenericState.interact && myState.myState != GenericState.inventory*/)
+        else if (tempMovement.magnitude >= 0)
         {
             tempMovement.x = Input.GetAxisRaw("Horizontal");
             tempMovement.y = Input.GetAxisRaw("Vertical");
@@ -119,7 +120,9 @@ public class PlayerMovement : Movement
         else
         {
             anim.SetAnimParameter("moving", false);
-            if (myState.myState == GenericState.idle || myState.myState == GenericState.walk || myState.myState == GenericState.pause)
+            if (myState.myState == GenericState.idle 
+                || myState.myState == GenericState.walk 
+                || myState.myState == GenericState.pause)
             {
                 SetState(GenericState.idle);
             }

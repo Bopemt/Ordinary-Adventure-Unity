@@ -7,6 +7,7 @@ using UnityEngine;
 public class PlayerInventory : ScriptableObject
 {
     public List<InventoryItem> myInventory = new List<InventoryItem>();
+    public List<InventoryItem> defaultInventory = new List<InventoryItem>();
 
     public void AddItem(InventoryItem newItem)
     {
@@ -65,5 +66,10 @@ public class PlayerInventory : ScriptableObject
     {
         myInventory.RemoveAll(item => item == null);
         myInventory.RemoveAll(item => item.numberHeld <= 0);
+    }
+
+    public void Reset()
+    {
+        myInventory = defaultInventory;
     }
 }

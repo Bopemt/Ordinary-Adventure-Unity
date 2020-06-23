@@ -5,6 +5,7 @@ using UnityEngine;
 public class Switch : MonoBehaviour
 {
     public bool isActive;
+    private bool onSwitchCheck = false;
     [SerializeField] private BoolValue storedValue;
     [SerializeField] private Sprite activeSprite;
     private SpriteRenderer mySprite;
@@ -32,9 +33,10 @@ public class Switch : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetButtonDown("Interact") && myState.myState == GenericState.interact)
+        if(Input.GetButtonDown("Interact") && myState.myState == GenericState.interact && onSwitchCheck)
         {
             DisableContents();
+            onSwitchCheck = false;
         }
     }
 
@@ -45,6 +47,7 @@ public class Switch : MonoBehaviour
             ActivateSwitch();
             if (notification)
             {
+                onSwitchCheck = true;
                 DisplayContents();
             }
         }

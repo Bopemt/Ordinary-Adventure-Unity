@@ -11,9 +11,6 @@ public class SlotManager : MonoBehaviour
     [SerializeField] protected GenericStateMachine playerState;
     private InventoryItem item;
 
-    //[Header("Description & Use Stuff")]
-    //public ItemValue currentItem;
-
     protected virtual void ClearSlots(GameObject slotPanel)
     {
         for (int i = 0; i < slotPanel.transform.childCount; i++)

@@ -1,0 +1,84 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6607010178623111832
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6607010178623111838}
+  - component: {fileID: 6607010178623111839}
+  m_Layer: 0
+  m_Name: Game Save Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6607010178623111838
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6607010178623111832}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 10.57, y: -7.24, z: -4.953125}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6607010178623111839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6607010178623111832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b073722a75a1944fa7dcc81d93ff5e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objects:
+  - {fileID: 11400000, guid: 994090fc01fdd0444bbd719d13deb838, type: 2}
+  - {fileID: 11400000, guid: 0d2a90529e54a454f9bee80d28ae4a0a, type: 2}
+  - {fileID: 11400000, guid: e52999d7610c23e41b5d7cb721222f8d, type: 2}
+  - {fileID: 11400000, guid: 0bb1edc4c0c9dbd41a1250747878fb70, type: 2}
+  - {fileID: 11400000, guid: 125aa0b642440a24e88d65da0249884b, type: 2}
+  - {fileID: 11400000, guid: 88eb95d43c194154f9184efd16f0235a, type: 2}
+  - {fileID: 11400000, guid: dde2d83f49aa6724db9a266086182c88, type: 2}
+  - {fileID: 11400000, guid: d0d7f7351568a7d4ea8c4459a3bdb884, type: 2}
+  - {fileID: 11400000, guid: 9e137e7f235d6554daaad92e23ae97bf, type: 2}
+  - {fileID: 11400000, guid: eb7ad4fd70202fc4ca5fb7bf5585b3cc, type: 2}
+  - {fileID: 11400000, guid: f464a7f0373c7204b8c9f8eaa8290d5c, type: 2}
+  - {fileID: 11400000, guid: b5f67d9ba3538cf4ea51b9ba1344d77e, type: 2}
+  - {fileID: 11400000, guid: 1b0c51fb9a4c0f44f91bbae74e42dd4a, type: 2}
+  - {fileID: 11400000, guid: 4487e84325818fd47a9d1d0456816d33, type: 2}
+  - {fileID: 11400000, guid: 293961a88fe5ef0469f739d036287e1f, type: 2}
+  - {fileID: 11400000, guid: b6b40472f4f81444e8cc6b389b1951d1, type: 2}
+  - {fileID: 11400000, guid: 96cc8665dd630bb4b9dba529a352ef3a, type: 2}
+  - {fileID: 11400000, guid: c872d5399c4edab4dbf3e48e4f8b5662, type: 2}
+  - {fileID: 11400000, guid: f9c71b4caca2e5b4bbd4828e1868d113, type: 2}
+  - {fileID: 11400000, guid: 4c377e28ef673124caa1ae67c2f9e678, type: 2}
+  - {fileID: 11400000, guid: b05e968687fb3e042986352992d32185, type: 2}
+  - {fileID: 11400000, guid: 60da87f1ae6ab2848b34f3f8123f5223, type: 2}
+  - {fileID: 11400000, guid: aae7ed23e46c6674c925c8e4f233503e, type: 2}
+  - {fileID: 11400000, guid: 8692a80354d9ffc4a9e2a5ac782a70e1, type: 2}
+  - {fileID: 11400000, guid: 35b5b034cea7e8a46b0b6a0df8d1170c, type: 2}
+  - {fileID: 11400000, guid: a90ac639db027fd4099077c50afa0288, type: 2}
+  - {fileID: 11400000, guid: 0b14714236a4c2f45b520c6966f80a6d, type: 2}
+  - {fileID: 11400000, guid: 01315388330a5574ab80409e8b393dea, type: 2}
+  - {fileID: 11400000, guid: 1835d8ce338a65a499a4e75dc9b5c993, type: 2}
+  - {fileID: 11400000, guid: 82c054d19b632ce429a3ca12fb86995d, type: 2}
+  - {fileID: 11400000, guid: dfedebd72a9257245961c0bea92e058a, type: 2}
+  - {fileID: 11400000, guid: 09f49286a910ad64095c9c5d2c3158fb, type: 2}
+  - {fileID: 11400000, guid: c315a1665ac41d14fa54de972aa5a9e0, type: 2}
+  - {fileID: 11400000, guid: 1fc76d2fa49729d4e9efb00cb5f32aa0, type: 2}
+  - {fileID: 11400000, guid: 932b47e0936ca3e4e9443dc951f1456f, type: 2}
+  playerTransform: {fileID: 0}
+  playerPosition: {fileID: 11400000, guid: 01315388330a5574ab80409e8b393dea, type: 2}
+  playerScene: {fileID: 11400000, guid: 932b47e0936ca3e4e9443dc951f1456f, type: 2}

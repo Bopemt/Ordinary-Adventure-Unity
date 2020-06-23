@@ -18,7 +18,7 @@ public class LevelSystem : MonoBehaviour
         expToNextLvl += expIncrease * (playerLevel.value - 1);
     }
 
-    public void AddExperience()
+    public void CheckExperience()
     {
         if(playerExp.value >= expToNextLvl)
         {
@@ -31,6 +31,7 @@ public class LevelSystem : MonoBehaviour
                 playerHealth.FullHeal();
                 GameObject effect = Instantiate(levelUpEffect, transform.parent);
                 Destroy(effect, 1f);
+                CheckExperience();
             }
         }
     }
